@@ -1,6 +1,36 @@
-/node_modules
-.env
-/.vscode
-/models-old
+# OS
+# ===========
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
 
+# NodeJS
+# =======
+node_modules/
+
+# General
+# =======
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.tmp
+*.bak
+*.swp
+logs/
+build/
+.env
 package-lock.json
+
+# Visual Studio
+# =========
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+.vscode/
+
+models-old/
