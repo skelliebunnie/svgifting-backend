@@ -1,0 +1,43 @@
+use svgifting;
+
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (1, 11, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (11, 1, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (4, 12, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (4, 28, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (12, 4, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (28, 4, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (5, 13, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (13, 5, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (6, 9, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (6, 7, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (6, 14, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (9, 6, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (7, 6, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (14, 6, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (7, 9, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (9, 7, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (10, 32, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (10, 16, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (10, 33, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (32, 10, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (16, 10, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (33, 10, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (13, 14, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (14, 13, NOW(), NOW());
+
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (17, 19, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (19, 17, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (16, 15, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (15, 16, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (21, 22, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (22, 21, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (23, 25, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (25, 23, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (24, 31, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (24, 34, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (31, 24, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (34, 24, NOW(), NOW());
+
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (34, 21, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (34, 22, NOW(), NOW());
+INSERT INTO villagerfriends (VillagerId, friendId, createdAt, updatedAt) VALUES (34, 14, NOW(), NOW());
