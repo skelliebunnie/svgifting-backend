@@ -74,29 +74,33 @@ router.post("/api/seed/subregions", function (req, res) {
       name: "Desert North",
       RegionId: 2
     },
-    {
+    { // 8
       name: "Island South",
       RegionId: 3
     },
-    { // 8
+    { // 9
       name: "Island Southeast",
       RegionId: 3
     },
-    { // 9
+    { // 10
       name: "Island East",
       RegionId: 3
     },
-    { // 10
+    { // 11
       name: "Island North",
       RegionId: 3
     },
-    { // 11
+    { // 12
       name: "Island West",
       RegionId: 3
     },
-    { // 12
+    { // 13
       name: "Swamp",
       RegionId: 1
+    },
+    { // 14
+      name: "Ginger Island (all)",
+      RegionId: 3
     }
   ]).then(seeded => {
     res.json(seeded)
@@ -271,6 +275,50 @@ router.post("/api/seed/locations", function (req, res) {
     { // 41
       name: "Treehouse",
       SubRegionId: 9
+    },
+    { // 42
+      name: "Mountain Road",
+      SubRegionId: 6
+    },
+    { // 43
+      name: "Railroad",
+      SubRegionId: 6
+    },
+    { // 44
+      name: "Mountain Lake",
+      SubRegionId: 6
+    },
+    { // 45
+      name: "River, Pelican Town",
+      SubRegionId: 3
+    },
+    { // 46
+      name: "River, Cindersap Forest",
+      SubRegionId: 4
+    },
+    { // 47
+      name: "Forest Lake",
+      SubRegionId: 4
+    },
+    { // 48
+      name: "Secret Woods",
+      SubRegionId: 4
+    },
+    { // 49
+      name: "Ocean, The Beach",
+      SubRegionId: 5
+    },
+    { // 50
+      name: "Ocean, Ginger Island",
+      SubRegionId: 14
+    },
+    { // 51
+      name: "Desert",
+      SubRegionId: 7
+    },
+    { // 41
+      name: "Desert Lake",
+      SubRegionId: 7
     }
   ]).then(seeded => {
     res.json(seeded)
@@ -802,8 +850,8 @@ router.post("/api/seed/animals", function(req, res) {
   }).catch(err => res.status(500).json(err));
 })
 
-// seed items
-router.post("/api/seed/items", function (req, res) {
+// seed cooked goods
+router.post("/api/seed/cooking", function (req, res) {
   db.Item.bulkCreate([
     {
       name: "Complete Breakfast",
@@ -827,22 +875,6 @@ router.post("/api/seed/items", function (req, res) {
       edible: true
     },
     {
-      name: "Leek",
-      source: "Forage, Spring Seeds",
-      sellPrice: 60,
-      TypeId: 2,
-      edible: true
-    },
-    {
-      name: "Beet",
-      source: "Beet Seeds",
-      sellPrice: 100,
-      TypeId: 5,
-      edible: true,
-      initialGrowthTime: 6,
-      processingTime: 6000
-    },
-    {
       name: "Chocolate Cake",
       source: "Queen of Sauce (14 Winter, Year 1)",
       sellPrice: 200,
@@ -850,34 +882,11 @@ router.post("/api/seed/items", function (req, res) {
       edible: true
     },
     {
-      name: "Diamond",
-      source: "Diamond Node, Gem Node, Monster drop, Fishing (Treasure Chest), Panning",
-      sellPrice: 750,
-      TypeId: 10,
-      edible: false
-    },
-    {
-      name: "Fairy  Rose",
-      source: "Fairy Seeds",
-      sellPrice: 290,
-      TypeId: 7,
-      edible: false,
-      initialGrowthTime: 12
-    },
-    {
       name: "Stuffing",
       source: "Pam (Mail, 7+ :heart:)",
       sellPrice: 165,
       TypeId: 1,
       edible: true
-    },
-    {
-      name: "Tulip",
-      source: "Tulip Bulb",
-      sellPrice: 30,
-      TypeId: 7,
-      edible: false,
-      initialGrowthTime: 6
     },
     {
       name: "Crab Cakes",
@@ -894,79 +903,10 @@ router.post("/api/seed/items", function (req, res) {
       edible: true
     },
     {
-      name: "Duck Feather",
-      source: "Traveling Cart",
-      animalId: null,
-      sellPrice: 30,
-      TypeId: 4,
-      edible: false
-    },
-    {
-      name: "Lobster",
-      source: "Crab Pot (ocean)",
-      sellPrice: 120,
-      TypeId: 14,
-      edible: false
-    },
-    {
-      name: "Pomegranate",
-      source: "Pomegranate Tree, Traveling Cart, Farm Cave (Fruit Bats)",
-      sellPrice: 140,
-      TypeId: 15,
-      edible: true
-    },
-    {
-      name: "Squid Ink",
-      source: "Squid Kid (Monster), Squid (Fish Pond), Midnight Squid (Fish Pond)",
-      sellPrice: 110,
-      TypeId: null,
-      edible: false
-    },
-    {
-      name: "Coffee",
-      source: "The Saloon",
-      equipmentId: 6,
-      sellPrice: 150,
-      TypeId: 3,
-      edible: true
-    },
-    {
-      name: "Pickles",
-      source: "Any Vegetable",
-      equipmentId: 4,
-      sellPrice: 222,
-      TypeId: 3,
-      edible: true
-    },
-    {
       name: "Super Meal",
       source: "Kent (Mail, 7+ :heart:)",
       sellPrice: 330,
       TypeId: 1,
-      edible: true
-    },
-    {
-      name: "Truffle Oil",
-      source: "Truffle",
-      equipmentId: 7,
-      sellPrice: 1065,
-      TypeId: 3,
-      edible: false
-    },
-    {
-      name: "Wine",
-      source: "Any Fruit",
-      equipmentId: 6,
-      sellPrice: 333,
-      TypeId: 3,
-      edible: true,
-      processingTime: 10000
-    },
-    {
-      name: "Cactus Fruit",
-      source: "Forage (Desert), Oasis, Cactus Seeds",
-      sellPrice: 75,
-      TypeId: 2,
       edible: true
     },
     {
@@ -984,27 +924,6 @@ router.post("/api/seed/items", function (req, res) {
       edible: true
     },
     {
-      name: "Tigerseye",
-      source: "Geode (Magma, Omni)",
-      sellPrice: 275,
-      TypeId: 9,
-      edible: false
-    },
-    {
-      name: "Frozen Tear",
-      source: "Mines (40-79), Geode (Frozen, Omni), Dust Sprite, Panning, Fishing (Treasure Chest)",
-      sellPrice: 75,
-      TypeId: 9,
-      edible: false
-    },
-    {
-      name: "Obsidian",
-      source: "Geode (Magma, Omni)",
-      sellPrice: 200,
-      TypeId: 9,
-      edible: false
-    },
-    {
       name: "Pumpkin Soup",
       source: "Robin (Mail, 7+ :heart:)",
       sellPrice: 300,
@@ -1019,13 +938,6 @@ router.post("/api/seed/items", function (req, res) {
       edible: true
     },
     {
-      name: "Void Egg",
-      source: "Void Chicken, Witch, Krobus",
-      sellPrice: 65,
-      TypeId: 4,
-      edible: true
-    },
-    {
       name: "Beer",
       source: "The Saloon, Ginger Island Resort",
       equipmentId: 6,
@@ -1035,27 +947,11 @@ router.post("/api/seed/items", function (req, res) {
       processingTime: 1750
     },
     {
-      name: "Hot Pepper",
-      source: "Pepper Seeds",
-      sellPrice: 40,
-      TypeId: 6,
-      edible: true,
-      initialGrowthTime: 5,
-      reproductionTime: 3
-    },
-    {
       name: "Pepper Poppers",
       source: "Shane (Mail, 3+ :heart:)",
       sellPrice: 200,
       TypeId: 1,
       edible: true
-    },
-    {
-      name: "Amethyst",
-      source: "Amethyst Node, Gem Node, Green Slime, Fishing (Treasure Chest), Panning",
-      sellPrice: 100,
-      TypeId: 10,
-      edible: false
     },
     {
       name: "Banana Pudding",
@@ -1072,21 +968,6 @@ router.post("/api/seed/items", function (req, res) {
       edible: true
     },
     {
-      name: "Pufferfish",
-      source: "Ocean, Ginger Island",
-      sellPrice: 200,
-      TypeId: 14,
-      edible: true
-    },
-    {
-      name: "Pumpkin",
-      source: "Pumpkin Seeds",
-      sellPrice: 320,
-      TypeId: null,
-      edible: false,
-      initialGrowthTime: 13
-    },
-    {
       name: "Spicy Eel",
       source: "George (Mail, 7+ :heart:), Desert Trader, Serpent, Lava Eel (Fish Pond)",
       sellPrice: 175,
@@ -1094,67 +975,11 @@ router.post("/api/seed/items", function (req, res) {
       edible: true
     },
     {
-      name: "Aquamarine",
-      source: "Aquamarine Node, Gem Node, Fishing (Treasure Chest), Panning",
-      sellPrice: 180,
-      TypeId: 10,
-      edible: false
-    },
-    {
-      name: "Cloth",
-      source: "Recycling (Soggy Newspaper), Mummy, Desert Trader",
-      equipmentId: 5,
-      sellPrice: 470,
-      TypeId: 3,
-      edible: false
-    },
-    {
-      name: "Emerald",
-      source: "Emerald Node, Gem Node, Fishing (Treasure Chest), Panning",
-      sellPrice: 250,
-      TypeId: 10,
-      edible: false
-    },
-    {
-      name: "Jade",
-      source: "Jade Node, Gem Node, Blue Slime, Dwarvish Sentry, Fishing (Treasure Chest)",
-      sellPrice: 200,
-      TypeId: 10
-    },
-    {
-      name: "Ruby",
-      source: "Ruby Node, Gem Node, Fishing (Treasure Chest), Panning",
-      sellPrice: 250,
-      TypeId: 10,
-      edible: false
-    },
-    {
       name: "Survival Burger",
       source: "Foraging (2)",
       sellPrice: 180,
       TypeId: 1,
       edible: true
-    },
-    {
-      name: "Topaz",
-      source: "Topaz Node, Gem Node, Fishing (Treasure Chest), Panning",
-      sellPrice: 80,
-      TypeId: 10,
-      edible: false
-    },
-    {
-      name: "Wool",
-      source: "Rabbit, Sheep",
-      sellPrice: 340,
-      TypeId: 4,
-      edible: false
-    },
-    {
-      name: "Coconut",
-      source: "Foraging (Desert, Ginger Island), Oasis",
-      sellPrice: 100,
-      TypeId: null,
-      edible: false
     },
     {
       name: "Fruit Salad",
@@ -1168,21 +993,6 @@ router.post("/api/seed/items", function (req, res) {
       source: "Queen of Sauce (21 Summer, Year 2)",
       sellPrice: 480,
       TypeId: 1,
-      edible: true
-    },
-    {
-      name: "Sunflower",
-      source: "Sunflower Seeds",
-      sellPrice: 80,
-      TypeId: 7,
-      edible: true,
-      initialGrowthTime: 8
-    },
-    {
-      name: "Goat Cheese",
-      source: "Cheese Press",
-      sellPrice: 400,
-      TypeId: 3,
       edible: true
     },
     {
@@ -1207,33 +1017,11 @@ router.post("/api/seed/items", function (req, res) {
       edible: false
     },
     {
-      name: "Truffle",
-      source: "Pigs",
-      sellPrice: 625,
-      TypeId: null,
-      edible: true
-    },
-    {
       name: "Vegetable Medley",
-      source: "",
+      source: "Caroline (mail, 7+ :heart:)",
       sellPrice: 0,
       TypeId: 1,
       edible: false
-    },
-    {
-      name: "Battery Pack",
-      source: "Lightning Rod, Solar Panel, Iridium Bat",
-      sellPrice: 500,
-      TypeId: 16,
-      edible: false
-    },
-    {
-      name: "Cauliflower",
-      source: "Cauliflower Seeds",
-      sellPrice: 175,
-      TypeId: 5,
-      edible: true,
-      initialGrowthTime: 12
     },
     {
       name: "Cheese Cauliflower",
@@ -1243,20 +1031,6 @@ router.post("/api/seed/items", function (req, res) {
       edible: true
     },
     {
-      name: "Gold Bar",
-      source: "Crafting, Furnace, Mines (tilling), Monster Drop",
-      sellPrice: 250,
-      TypeId: null,
-      edible: false
-    },
-    {
-      name: "Iridium Bar",
-      source: "Furnace, Shadow Brute, Iridium Bat, Purple Slime",
-      sellPrice: 1000,
-      TypeId: null,
-      edible: false
-    },
-    {
       name: "Miner's Treat",
       source: "Mining (3), Dwarf, Mummy",
       sellPrice: 200,
@@ -1264,43 +1038,11 @@ router.post("/api/seed/items", function (req, res) {
       edible: true
     },
     {
-      name: "Radioactive Bar",
-      source: "Furnace",
-      sellPrice: 3000,
-      TypeId: null,
-      edible: false
-    },
-    {
       name: "Rhubarb Pie",
       source: "Marnie (Mail, 7+ :heart:)",
       sellPrice: 400,
       TypeId: 1,
       edible: true
-    },
-    {
-      name: "Strawberry",
-      source: "Strawberry Seeds",
-      sellPrice: 120,
-      TypeId: 6,
-      edible: true,
-      initialGrowthTime: 8,
-      reproductionTime: 4
-    },
-    {
-      name: "Melon",
-      source: "Melon Seeds",
-      sellPrice: 250,
-      TypeId: 6,
-      edible: true,
-      initialGrowthTime: 12
-    },
-    {
-      name: "Poppy",
-      source: "Poppy Seeds",
-      sellPrice: 140,
-      TypeId: 7,
-      edible: true,
-      initialGrowthTime: 7
     },
     {
       name: "Red Plate",
@@ -1317,13 +1059,6 @@ router.post("/api/seed/items", function (req, res) {
       edible: true
     },
     {
-      name: "Sandfish",
-      source: "Desert",
-      sellPrice: 75,
-      TypeId: 14,
-      edible: true
-    },
-    {
       name: "Fish Taco",
       source: "Linus (mail, 7+ :heart:)",
       sellPrice: 500,
@@ -1331,27 +1066,11 @@ router.post("/api/seed/items", function (req, res) {
       edible: true
     },
     {
-      name: "Green Tea",
-      source: "Artisan Goods",
-      sellPrice: 100,
-      TypeId: 3,
-      edible: true,
-      equipment: 6
-    },
-    {
       name: "Tropical Curry",
       source: "Ginger Island Resort (Gus)",
       sellPrice: 500,
       TypeId: 1,
       edible: true
-    },
-    {
-      name: "Summer Spangle",
-      source: "Spangle Seeds",
-      sellPrice: 90,
-      TypeId: 7,
-      edible: true,
-      initialGrowthTime: 8
     },
     {
       name: "Artichoke Dip",
@@ -1366,13 +1085,6 @@ router.post("/api/seed/items", function (req, res) {
       sellPrice: 350,
       TypeId: 1,
       edible: true
-    },
-    {
-      name: "Omni Geode",
-      source: "Mining, Carbon Ghost, Panning, Krobus, Oasis, Crane Game (Movie Theater), Omni Geode Node",
-      sellPrice: 0,
-      TypeId: 11,
-      edible: false
     },
     {
       name: "Bean Hotpot",
@@ -1394,7 +1106,147 @@ router.post("/api/seed/items", function (req, res) {
       sellPrice: 260,
       TypeId: 1,
       edible: true
-    }
+    },
+    {
+      name: "Escargot",
+      source: "Willy (mail, 5+ :heart:)",
+      sellPrice: 125,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Plum Pudding",
+      source: "Queen of Sauce (7 Winter, Year 1)",
+      sellPrice: 260,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Crispy Bass",
+      source: "Kent (mail, 3+ :heart:)",
+      sellPrice: 150,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Eggplant Parmesan",
+      source: "Lewis (mail, 7+ :heart:)",
+      sellPrice: 200,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Fried Eel",
+      source: "George (mail, 3+ :heart:)",
+      sellPrice: 120,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Pancakes",
+      source: "Queen of Sauce (14 Summer, Year 1)",
+      sellPrice: 80,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Roasted Hazelnuts",
+      source: "Queen of Sauce (28 Summer, Year 2)",
+      sellPrice: 270,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Autumn's Bounty",
+      source: "Demetrius (mail, 7+ :heart:)",
+      sellPrice: 350,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Glazed Yams",
+      source: "Queen of Sauce (21 Fall, Year 1)",
+      sellPrice: 200,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Blueberry Tart",
+      source: "Pierre (mail, 3+ :heart:)",
+      sellPrice: 150,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Dish o' The Sea",
+      source: "Fishing (3)",
+      sellPrice: 220,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Farmer's Lunch",
+      source: "Farming (3)",
+      sellPrice: 150,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Pumpkin Pie",
+      source: "Queen of Sauce (21 Winter, Year 1)",
+      sellPrice: 385,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Parsnip Soup",
+      source: "Caroline (mail, 3+ :heart:)",
+      sellPrice: 120,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Fried Calamari",
+      source: "Jodi (mail, 3+ :heart:)",
+      sellPrice: 150,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Spaghetti",
+      source: "Lewis (mail, 3+ :heart:)",
+      sellPrice: 120,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Cranberry Candy",
+      source: "Queen of Sauce (28 Winter, Year 1)",
+      sellPrice: 175,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Ginger Ale",
+      source: "Dwarf Shop",
+      sellPrice: 200,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Poi",
+      source: "Leo (mail, 3+ :heart:)",
+      sellPrice: 400,
+      TypeId: 1,
+      edible: true
+    },
+    {
+      name: "Mango Sticky Rice",
+      source: "Leo (mail, 7+ :heart:)",
+      sellPrice: 250,
+      TypeId: 1,
+      edible: true
+    },
   ]).then(seeded => {
     res.json(seeded)
   }).catch(function (error) {
@@ -1402,368 +1254,968 @@ router.post("/api/seed/items", function (req, res) {
   });
 });
 
-router.post("/api/seed/gifts", function(req, res) {
-  db.Gift.bulkCreate([
+// seed forage
+router.post("/api/seed/forage", function(req, res) {
+  db.Item.bulkCreate([
     {
-      VillagerId: 1,
-      ItemId: 1,
-      preference: 'love'
+      name: "Leek",
+      source: "Forage, Spring Seeds",
+      sellPrice: 60,
+      TypeId: 2,
+      edible: true
     },
     {
-      VillagerId: 1,
-      ItemId: 2,
-      preference: 'love'
+      name: "Cactus Fruit",
+      source: "Forage (Desert), Oasis, Cactus Seeds",
+      sellPrice: 75,
+      TypeId: 2,
+      edible: true
     },
     {
-      VillagerId: 4,
-      ItemId: 11,
-      preference: 'love'
+      name: "Coconut",
+      source: "Foraging (Desert, Ginger Island), Oasis",
+      sellPrice: 100,
+      TypeId: 2,
+      edible: false
     },
     {
-      VillagerId: 4,
-      ItemId: 12,
-      preference: 'love'
+      name: "Truffle",
+      source: "Pigs",
+      sellPrice: 625,
+      TypeId: 2,
+      edible: true
     },
     {
-      VillagerId: 4,
-      ItemId: 13,
-      preference: 'love'
+      name: "Wild Horseradish",
+      source: "Forage, Spring Seeds",
+      sellPrice: 50,
+      TypeId: 2,
+      edible: true
     },
     {
-      VillagerId: 4,
-      ItemId: 14,
-      preference: 'love'
+      name: "Crocus",
+      source: "Forage, Winter Seeds",
+      sellPrice: 60,
+      TypeId: 2,
+      edible: true
     },
     {
-      VillagerId: 4,
-      ItemId: 15,
-      preference: 'love'
+      name: "Daffodil",
+      source: "Forage, Spring Seeds",
+      sellPrice: 30,
+      TypeId: 2,
+      edible: true
     },
     {
-      VillagerId: 4,
-      ItemId: 16,
-      preference: 'love'
+      name: "Sweet Pea",
+      source: "Forage, Summer Seeds",
+      sellPrice: 50,
+      TypeId: 2,
+      edible: true
     },
     {
-      VillagerId: 5,
-      ItemId: 17,
-      preference: 'love'
+      name: "Purple Mushroom",
+      source: "Mines (81+), Mushroom Tree (tapper)",
+      sellPrice: 250,
+      TypeId: 2,
+      edible: true
     },
-    {
-      VillagerId: 5,
-      ItemId: 18,
-      preference: 'love'
-    },
-    {
-      VillagerId: 5,
-      ItemId: 19,
-      preference: 'love'
-    },
-    {
-      VillagerId: 5,
-      ItemId: 20,
-      preference: 'love'
-    },
-    {
-      VillagerId: 5,
-      ItemId: 21,
-      preference: 'love'
-    },
-    {
-      VillagerId: 6,
-      ItemId: 22,
-      preference: 'love'
-    },
-    {
-      VillagerId: 6,
-      ItemId: 23,
-      preference: 'love'
-    },
-    {
-      VillagerId: 6,
-      ItemId: 24,
-      preference: 'love'
-    },
-    {
-      VillagerId: 6,
-      ItemId: 25,
-      preference: 'love'
-    },
-    {
-      VillagerId: 7,
-      ItemId: 26,
-      preference: 'love'
-    },
-    {
-      VillagerId: 7,
-      ItemId: 27,
-      preference: 'love'
-    },
-    {
-      VillagerId: 7,
-      ItemId: 28,
-      preference: 'love'
-    },
-    {
-      VillagerId: 7,
-      ItemId: 29,
-      preference: 'love'
-    },
-    {
-      VillagerId: 7,
-      ItemId: 30,
-      preference: 'love'
-    },
-    {
-      VillagerId: 8,
-      ItemId: 31,
-      preference: 'love'
-    },
-    {
-      VillagerId: 8,
-      ItemId: 32,
-      preference: 'love'
-    },
-    {
-      VillagerId: 8,
-      ItemId: 33,
-      preference: 'love'
-    },
-    {
-      VillagerId: 9,
-      ItemId: 34,
-      preference: 'love'
-    },
-    {
-      VillagerId: 9,
-      ItemId: 35,
-      preference: 'love'
-    },
-    {
-      VillagerId: 9,
-      ItemId: 36,
-      preference: 'love'
-    },
-    {
-      VillagerId: 9,
-      ItemId: 37,
-      preference: 'love'
-    },
-    {
-      VillagerId: 9,
-      ItemId: 38,
-      preference: 'love'
-    },
-    {
-      VillagerId: 9,
-      ItemId: 39,
-      preference: 'love'
-    },
-    {
-      VillagerId: 9,
-      ItemId: 40,
-      preference: 'love'
-    },
-    {
-      VillagerId: 10,
-      ItemId: 34,
-      preference: 'love'
-    },
-    {
-      VillagerId: 10,
-      ItemId: 41,
-      preference: 'love'
-    },
-    {
-      VillagerId: 10,
-      ItemId: 42,
-      preference: 'love'
-    },
-    {
-      VillagerId: 10,
-      ItemId: 43,
-      preference: 'love'
-    },
-    {
-      VillagerId: 10,
-      ItemId: 44,
-      preference: 'love'
-    },
-    {
-      VillagerId: 10,
-      ItemId: 45,
-      preference: 'love'
-    },
-    {
-      VillagerId: 10,
-      ItemId: 46,
-      preference: 'love'
-    },
-    {
-      VillagerId: 10,
-      ItemId: 47,
-      preference: 'love'
-    },
-    {
-      VillagerId: 10,
-      ItemId: 48,
-      preference: 'love'
-    },
-    {
-      VillagerId: 11,
-      ItemId: 49,
-      preference: 'love'
-    },
-    {
-      VillagerId: 11,
-      ItemId: 50,
-      preference: 'love'
-    },
-    {
-      VillagerId: 11,
-      ItemId: 51,
-      preference: 'love'
-    },
-    {
-      VillagerId: 11,
-      ItemId: 52,
-      preference: 'love'
-    },
-    {
-      VillagerId: 12,
-      ItemId: 53,
-      preference: 'love'
-    },
-    {
-      VillagerId: 12,
-      ItemId: 54,
-      preference: 'love'
-    },
-    {
-      VillagerId: 12,
-      ItemId: 55,
-      preference: 'love'
-    },
-    {
-      VillagerId: 12,
-      ItemId: 56,
-      preference: 'love'
-    },
-    {
-      VillagerId: 12,
-      ItemId: 57,
-      preference: 'love'
-    },
-    {
-      VillagerId: 12,
-      ItemId: 58,
-      preference: 'love'
-    },
-    {
-      VillagerId: 12,
-      ItemId: 21,
-      preference: 'love'
-    },
-    {
-      VillagerId: 13,
-      ItemId: 7,
-      preference: 'love'
-    },
-    {
-      VillagerId: 13,
-      ItemId: 59,
-      preference: 'love'
-    },
-    {
-      VillagerId: 13,
-      ItemId: 60,
-      preference: 'love'
-    },
-    {
-      VillagerId: 13,
-      ItemId: 61,
-      preference: 'love'
-    },
-    {
-      VillagerId: 13,
-      ItemId: 62,
-      preference: 'love'
-    },
-    {
-      VillagerId: 13,
-      ItemId: 63,
-      preference: 'love'
-    },
-    {
-      VillagerId: 13,
-      ItemId: 65,
-      preference: 'love'
-    },
-    {
-      VillagerId: 13,
-      ItemId: 66,
-      preference: 'love'
-    },
-    {
-      VillagerId: 13,
-      ItemId: 67,
-      preference: 'love'
-    },
-    {
-      VillagerId: 13,
-      ItemId: 33,
-      preference: 'love'
-    },
-    {
-      VillagerId: 14,
-      ItemId: 7,
-      preference: 'love'
-    },
-    {
-      VillagerId: 14,
-      ItemId: 43,
-      preference: 'love'
-    },
-    {
-      VillagerId: 14,
-      ItemId: 68,
-      preference: 'love'
-    },
-    {
-      VillagerId: 14,
-      ItemId: 69,
-      preference: 'love'
-    },
-    {
-      VillagerId: 14,
-      ItemId: 54,
-      preference: 'love'
-    },
-    {
-      VillagerId: 14,
-      ItemId: 70,
-      preference: 'love'
-    },
-    {
-      VillagerId: 14,
-      ItemId: 71,
-      preference: 'love'
-    },
-    {
-      VillagerId: 14,
-      ItemId: 72,
-      preference: 'love'
-    },
-    {
-      VillagerId: 14,
-      ItemId: 12,
-      preference: 'love'
-    }
-  ]).then(seeded => {
-    res.json(seeded);
-  }).catch(function (error) {
-    res.status(500).json(error)
-  });
+  ])
+    .then(seeded => res.json(seeded))
+    .catch(err => res.status(500).json(err))
 });
+
+router.post("/api/seed/artisan-goods", function(req, res) {
+  db.Item.bulkCreate([
+    {
+      name: "Coffee",
+      source: "The Saloon",
+      equipmentId: 6,
+      sellPrice: 150,
+      TypeId: 3,
+      edible: true
+    },
+    {
+      name: "Pickles",
+      source: "Any Vegetable",
+      equipmentId: 4,
+      sellPrice: 222,
+      TypeId: 3,
+      edible: true
+    },
+    {
+      name: "Truffle Oil",
+      source: "Truffle",
+      equipmentId: 7,
+      sellPrice: 1065,
+      TypeId: 3,
+      edible: false
+    },
+    {
+      name: "Wine",
+      source: "Any Fruit",
+      equipmentId: 6,
+      sellPrice: 333,
+      TypeId: 3,
+      edible: true,
+      processingTime: 10000
+    },
+    {
+      name: "Void Mayonnaise",
+      source: "Artisan Goods",
+      sellPrice: 275,
+      TypeId: 3,
+      edible: true,
+      EquipmentId: 2,
+      ProcessingTime: 380
+    },
+    {
+      name: "Cloth",
+      source: "Recycling (Soggy Newspaper), Mummy, Desert Trader",
+      equipmentId: 5,
+      sellPrice: 470,
+      TypeId: 3,
+      edible: false
+    },
+    {
+      name: "Goat Cheese",
+      source: "Cheese Press",
+      sellPrice: 400,
+      TypeId: 3,
+      edible: true
+    },
+    {
+      name: "Green Tea",
+      source: "Artisan Goods",
+      sellPrice: 100,
+      TypeId: 3,
+      edible: true,
+      equipment: 6
+    },
+    {
+      name: "Mead",
+      source: "Artisan Goods",
+      sellPrice: 200,
+      TypeId: 3,
+      EquipmentId: 6,
+      processingTime: 600,
+      edible: true
+    },
+    {
+      name: "Pale Ale",
+      source: "Artisan Goods",
+      sellPrice: 100,
+      TypeId: 3,
+      EquipmentId: 6,
+      processingTime: 2250,
+      edible: true
+    },
+
+  ])
+    .then(seeded => res.json(seeded))
+    .catch(err => res.status(500).json(err))
+});
+
+router.post("/api/seed/animal-products", function(req, res) {
+  db.Item.bulkCreate([
+    {
+      name: "Duck Feather",
+      source: "Traveling Cart",
+      animalId: null,
+      sellPrice: 30,
+      TypeId: 4,
+      edible: false
+    },
+    {
+      name: "Void Egg",
+      source: "Void Chicken, Witch, Krobus",
+      sellPrice: 65,
+      TypeId: 4,
+      edible: true
+    },
+    {
+      name: "Ostrich Egg",
+      source: "Ostrich",
+      sellPrice: 600,
+      TypeId: 4,
+      edible: true
+    },
+    {
+      name: "Wool",
+      source: "Rabbit, Sheep",
+      sellPrice: 340,
+      TypeId: 4,
+      edible: false
+    },
+  ])
+    .then(seeded => res.json(seeded))
+    .catch(err => res.status(500).json(err))
+});
+
+router.post("/api/seed/crops", function(req, res) {
+  db.Item.bulkCreate([
+    {
+      name: "Beet",
+      source: "Beet Seeds",
+      sellPrice: 100,
+      TypeId: 5,
+      edible: true,
+      initialGrowthTime: 6,
+      processingTime: 6000
+    },
+    {
+      name: "Cauliflower",
+      source: "Cauliflower Seeds",
+      sellPrice: 175,
+      TypeId: 5,
+      edible: true,
+      initialGrowthTime: 12
+    },
+    {
+      name: "Yam",
+      source: "Yam Seeds",
+      sellPrice: 160,
+      TypeId: 5,
+      edible: true
+    },
+    {
+      name: "Parsnip",
+      source: "Parsnip Seeds",
+      sellPrice: 35,
+      TypeId: 5,
+      initialGrowthTime: 4,
+      edible: true
+    },
+    {
+      name: "Hot Pepper",
+      source: "Pepper Seeds",
+      sellPrice: 40,
+      TypeId: 6,
+      edible: true,
+      initialGrowthTime: 5,
+      reproductionTime: 3
+    },
+    {
+      name: "Strawberry",
+      source: "Strawberry Seeds",
+      sellPrice: 120,
+      TypeId: 6,
+      edible: true,
+      initialGrowthTime: 8,
+      reproductionTime: 4
+    },
+    {
+      name: "Melon",
+      source: "Melon Seeds",
+      sellPrice: 250,
+      TypeId: 6,
+      edible: true,
+      initialGrowthTime: 12
+    },
+    {
+      name: "Grape",
+      source: "Grape Starter",
+      sellPrice: 80,
+      TypeId: 6,
+      initialGrowthTime: 10,
+      reproductionTime: 3,
+      edible: true
+    },
+    {
+      name: "Poppy",
+      source: "Poppy Seeds",
+      sellPrice: 140,
+      TypeId: 7,
+      edible: true,
+      initialGrowthTime: 7
+    },
+    {
+      name: "Fairy Rose",
+      source: "Fairy Seeds",
+      sellPrice: 290,
+      TypeId: 7,
+      edible: false,
+      initialGrowthTime: 12
+    },
+    {
+      name: "Tulip",
+      source: "Tulip Bulb",
+      sellPrice: 30,
+      TypeId: 7,
+      edible: false,
+      initialGrowthTime: 6
+    },
+    {
+      name: "Sunflower",
+      source: "Sunflower Seeds",
+      sellPrice: 80,
+      TypeId: 7,
+      edible: true,
+      initialGrowthTime: 8
+    },
+    {
+      name: "Summer Spangle",
+      source: "Spangle Seeds",
+      sellPrice: 90,
+      TypeId: 7,
+      edible: true,
+      initialGrowthTime: 8
+    },
+    {
+      name: "Pomegranate",
+      source: "Pomegranate Tree",
+      sellPrice: 140,
+      TypeId: 15,
+      edible: true,
+      initialGrowthTime: 28,
+      reproductionTime: 1
+    },
+    {
+      name: "Orange",
+      source: "Orange Tree",
+      sellPrice: 100,
+      TypeId: 15,
+      edible: true,
+      initialGrowthTime: 28,
+      reproductionTime: 1
+    },
+    {
+      name: "Peach",
+      source: "Peach Tree",
+      sellPrice: 140,
+      TypeId: 15,
+      edible: true,
+      initialGrowthTime: 28,
+      reproductionTime: 1
+    },
+    {
+      name: "Pumpkin",
+      source: "Pumpkin Seeds",
+      sellPrice: 320,
+      TypeId: 5,
+      edible: false,
+      initialGrowthTime: 13
+    },
+    {
+      name: "Mango",
+      source: "Mango Tree",
+      sellPrice: 140,
+      TypeId: 15,
+      edible: true,
+      initialGrowthTime: 28,
+      reproductionTime: 1
+    },
+  ])
+    .then(seeded => res.json(seeded))
+    .catch(err => res.status(500).json(err))
+});
+
+router.post("/api/seed/minerals-gems-geodes", function(req, res) {
+  db.Item.bulkCreate([
+    {
+      name: "Tigerseye",
+      source: "Geode (Magma, Omni)",
+      sellPrice: 275,
+      TypeId: 9,
+      edible: false
+    },
+    {
+      name: "Frozen Tear",
+      source: "Mines (40-79), Geode (Frozen, Omni), Dust Sprite, Panning, Fishing (Treasure Chest)",
+      sellPrice: 75,
+      TypeId: 9,
+      edible: false
+    },
+    {
+      name: "Obsidian",
+      source: "Geode (Magma, Omni)",
+      sellPrice: 200,
+      TypeId: 9,
+      edible: false
+    },
+    {
+      name: "Lemon Stone",
+      source: "Geode (Magma, Omni)",
+      sellPrice: 200,
+      TypeId: 9,
+      edible: false
+    },
+    {
+      name: "Diamond",
+      source: "Diamond Node, Gem Node, Monster drop, Fishing (Treasure Chest), Panning",
+      sellPrice: 750,
+      TypeId: 10,
+      edible: false
+    },
+    {
+      name: "Amethyst",
+      source: "Amethyst Node, Gem Node, Green Slime, Fishing (Treasure Chest), Panning",
+      sellPrice: 100,
+      TypeId: 10,
+      edible: false
+    },
+    {
+      name: "Aquamarine",
+      source: "Aquamarine Node, Gem Node, Fishing (Treasure Chest), Panning",
+      sellPrice: 180,
+      TypeId: 10,
+      edible: false
+    },
+    {
+      name: "Emerald",
+      source: "Emerald Node, Gem Node, Fishing (Treasure Chest), Panning",
+      sellPrice: 250,
+      TypeId: 10,
+      edible: false
+    },
+    {
+      name: "Jade",
+      source: "Jade Node, Gem Node, Blue Slime, Dwarvish Sentry, Fishing (Treasure Chest)",
+      sellPrice: 200,
+      TypeId: 10
+    },
+    {
+      name: "Ruby",
+      source: "Ruby Node, Gem Node, Fishing (Treasure Chest), Panning",
+      sellPrice: 250,
+      TypeId: 10,
+      edible: false
+    },
+    {
+      name: "Topaz",
+      source: "Topaz Node, Gem Node, Fishing (Treasure Chest), Panning",
+      sellPrice: 80,
+      TypeId: 10,
+      edible: false
+    },
+    {
+      name: "Omni Geode",
+      source: "Mining, Carbon Ghost, Panning, Krobus, Oasis, Crane Game (Movie Theater), Omni Geode Node",
+      sellPrice: 0,
+      TypeId: 11,
+      edible: false
+    },
+  ])
+    .then(seeded => res.json(seeded))
+    .catch(err => res.status(500).json(err))
+});
+
+router.post("/api/seed/fish", function(req, res) {
+  db.Item.bulkCreate([
+    {
+      name: "Lobster",
+      source: "Crab Pot (ocean)",
+      sellPrice: 120,
+      TypeId: 14,
+      edible: false
+    },
+    {
+      name: "Pufferfish",
+      source: "Ocean, Ginger Island",
+      sellPrice: 200,
+      TypeId: 14,
+      edible: true
+    },
+    {
+      name: "Sandfish",
+      source: "Desert",
+      sellPrice: 75,
+      TypeId: 14,
+      edible: true
+    },
+    {
+      name: "Snail",
+      source: "Crab Pot (Freshwater)",
+      sellPrice: 65,
+      TypeId: 14,
+      edible: false
+    },
+    {
+      name: "Catfish",
+      source: "River, Secret Woods, Witch's Swamp",
+      sellPrice: 200,
+      TypeId: 14,
+      behavior: 'mixed',
+      size: '12-73',
+      difficulty: 75,
+      edible: true
+    },
+    {
+      name: "Octopus",
+      source: "150, Ginger Island",
+      sellPrice: 100,
+      TypeId: 14,
+      edible: false,
+      difficulty: 95,
+      behavior: 'sinker',
+      size: '12-49'
+    },
+    {
+      name: "Sea Cucumber",
+      source: "Ocean",
+      sellPrice: 75,
+      TypeId: 14,
+      edible: true,
+      difficulty: 40,
+      behavior: 'sinker',
+      size: '3-21'
+    },
+    {
+      name: "Sturgeon",
+      source: "Mountain Lake",
+      sellPrice: 200,
+      TypeId: 14,
+      edible: true,
+      difficulty: 78,
+      behavior: 'mixed',
+      size: '12-61'
+    },
+    {
+      name: "Super Cucumber",
+      source: "Ocean, Ginger Island",
+      sellPrice: 250,
+      TypeId: 14,
+      edible: true,
+      difficulty: 80,
+      behavior: 'sinker',
+      size: '12-37'
+    },
+  ])
+    .then(seeded => res.json(seeded))
+    .catch(err => res.status(500).json(err))
+});
+
+router.post("/api/seed/other", function(req, res) {
+  db.Item.bulkCreate([
+    {
+      name: "Battery Pack",
+      source: "Lightning Rod, Solar Panel, Iridium Bat",
+      sellPrice: 500,
+      TypeId: 16,
+      edible: false
+    },
+    {
+      name: "Gold Bar",
+      source: "Crafting, Furnace, Mines (tilling), Monster Drop",
+      sellPrice: 250,
+      TypeId: null,
+      edible: false,
+      EquipmentId: 9,
+      processingTime: 300
+    },
+    {
+      name: "Iridium Bar",
+      source: "Furnace, Shadow Brute, Iridium Bat, Purple Slime",
+      sellPrice: 1000,
+      TypeId: null,
+      edible: false,
+      EquipmentId: 9,
+      processingTime: 480
+    },
+    {
+      name: "Radioactive Bar",
+      source: "Furnace",
+      sellPrice: 3000,
+      TypeId: null,
+      edible: false,
+      EquipmentId: 9,
+      processingTime: 600
+    },
+    {
+      name: "Squid Ink",
+      source: "Squid Kid (Monster), Squid (Fish Pond), Midnight Squid (Fish Pond)",
+      sellPrice: 110,
+      TypeId: null,
+      edible: false
+    },
+    {
+      name: "Piña Colada",
+      source: "Gus (Beach Resort Bar)",
+      sellPrice: 300,
+      TypeId: null,
+      edible: true
+    },
+    {
+      name: "Solar Essence",
+      source: "Monster Drop",
+      sellPrice: 40,
+      TypeId: 8,
+      edible: false
+    },
+    {
+      name: "Void Essence",
+      source: "Monster Drop",
+      sellPrice: 50,
+      TypeId: 8,
+      edible: false
+    }
+  ])
+    .then(seeded => res.json(seeded))
+    .catch(err => res.status(500).json(err))
+});
+
+// router.post("/api/seed/gifts", function(req, res) {
+//   db.Gift.bulkCreate([
+//     {
+//       VillagerId: 1,
+//       ItemId: 1,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 1,
+//       ItemId: 2,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 4,
+//       ItemId: 11,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 4,
+//       ItemId: 12,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 4,
+//       ItemId: 13,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 4,
+//       ItemId: 14,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 4,
+//       ItemId: 15,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 4,
+//       ItemId: 16,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 5,
+//       ItemId: 17,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 5,
+//       ItemId: 18,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 5,
+//       ItemId: 19,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 5,
+//       ItemId: 20,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 5,
+//       ItemId: 21,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 6,
+//       ItemId: 22,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 6,
+//       ItemId: 23,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 6,
+//       ItemId: 24,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 6,
+//       ItemId: 25,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 7,
+//       ItemId: 26,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 7,
+//       ItemId: 27,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 7,
+//       ItemId: 28,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 7,
+//       ItemId: 29,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 7,
+//       ItemId: 30,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 8,
+//       ItemId: 31,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 8,
+//       ItemId: 32,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 8,
+//       ItemId: 33,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 9,
+//       ItemId: 34,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 9,
+//       ItemId: 35,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 9,
+//       ItemId: 36,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 9,
+//       ItemId: 37,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 9,
+//       ItemId: 38,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 9,
+//       ItemId: 39,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 9,
+//       ItemId: 40,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 10,
+//       ItemId: 34,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 10,
+//       ItemId: 41,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 10,
+//       ItemId: 42,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 10,
+//       ItemId: 43,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 10,
+//       ItemId: 44,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 10,
+//       ItemId: 45,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 10,
+//       ItemId: 46,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 10,
+//       ItemId: 47,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 10,
+//       ItemId: 48,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 11,
+//       ItemId: 49,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 11,
+//       ItemId: 50,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 11,
+//       ItemId: 51,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 11,
+//       ItemId: 52,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 12,
+//       ItemId: 53,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 12,
+//       ItemId: 54,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 12,
+//       ItemId: 55,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 12,
+//       ItemId: 56,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 12,
+//       ItemId: 57,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 12,
+//       ItemId: 58,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 12,
+//       ItemId: 21,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 13,
+//       ItemId: 7,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 13,
+//       ItemId: 59,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 13,
+//       ItemId: 60,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 13,
+//       ItemId: 61,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 13,
+//       ItemId: 62,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 13,
+//       ItemId: 63,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 13,
+//       ItemId: 65,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 13,
+//       ItemId: 66,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 13,
+//       ItemId: 67,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 13,
+//       ItemId: 33,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 14,
+//       ItemId: 7,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 14,
+//       ItemId: 43,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 14,
+//       ItemId: 68,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 14,
+//       ItemId: 69,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 14,
+//       ItemId: 54,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 14,
+//       ItemId: 70,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 14,
+//       ItemId: 71,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 14,
+//       ItemId: 72,
+//       preference: 'love'
+//     },
+//     {
+//       VillagerId: 14,
+//       ItemId: 12,
+//       preference: 'love'
+//     }
+//   ]).then(seeded => {
+//     res.json(seeded);
+//   }).catch(function (error) {
+//     res.status(500).json(error)
+//   });
+// });
 
 module.exports = router;

@@ -12,7 +12,8 @@ router.post('/api/item', function(req, res) {
 
 router.get('/api/items', function(req, res) {
   db.Item.findAll({
-    attributes: ['name', 'source', 'sellPrice', 'edible', 'difficulty', 'behavior', 'size', 'initialGrowthTime', 'reproductionTime', 'processingTime', 'EquipmentId', 'AnimalId', 'LocationId', 'TypeId']
+    attributes: ['id', 'name', 'source', 'sellPrice', 'edible', 'difficulty', 'behavior', 'size', 'initialGrowthTime', 'reproductionTime', 'processingTime', 'EquipmentId', 'AnimalId', 'LocationId', 'TypeId'],
+    order: ['name']
   }).then(items => {
     return res.json(items);
   }).catch(err => res.status(500).json(err));

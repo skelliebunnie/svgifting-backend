@@ -8,10 +8,7 @@ router.post('/api/create', function(req, res) {
   
 })
 
-router.get('/api/locations', function(req, res) {
-  db.Location.findAll()
-    .then(types => res.json(types))
-    .catch(err => res.status(500).json(err))
+router.get('/api/read', function(req, res) {
 
 })
 

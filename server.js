@@ -33,6 +33,22 @@ app.use(giftRoutes);
 const itemRoutes = require("./controllers/itemController.js");
 app.use(itemRoutes);
 
+// item types routes
+const itemTypesRoutes = require("./controllers/itemTypeController.js");
+app.use(itemTypesRoutes);
+
+// equipment routes
+const equipmentRoutes = require("./controllers/equipmentController.js");
+app.use(equipmentRoutes);
+
+// animal routes
+const animalRoutes = require("./controllers/animalController.js");
+app.use(animalRoutes);
+
+// location routes
+const locationRoutes = require("./controllers/locationController.js");
+app.use(locationRoutes);
+
 const PORT = process.env.PORT || 3030;
 db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {

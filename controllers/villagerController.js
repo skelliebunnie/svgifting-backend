@@ -18,7 +18,8 @@ router.post("/api/villager", function (req, res) {
 //GET all villagers
 router.get("/api/villagers", function (req, res) {
   db.Villager.findAll({
-    attributes: ['name', 'birthdayDate', 'checkupDate', 'available'],
+    attributes: ['name', 'birthdayDate', 'checkupDate', 'available', 'id'],
+    order: ['name'],
     include: [
       {
         model: db.Item,
@@ -66,7 +67,7 @@ router.get("/api/villagers", function (req, res) {
 //GET one villager (by name)
 router.get("/api/villagers/:villagerName", function (req, res) {
   db.Villager.findOne({
-    attributes: ['name', 'birthdayDate', 'checkupDate', 'available'],
+    attributes: ['name', 'birthdayDate', 'checkupDate', 'available', 'id'],
     where: {
       name: req.params.villagerName
     },

@@ -14,6 +14,30 @@ router.post("/api/gift", function (req, res) {
   })
 })
 
+// GET all gifts
+router.get("/api/gifts", function (req, res) {
+  db.Item.findAll({
+    attributes: ['name'],
+    include: [
+      {
+        model: db.Villager,
+        attributes: ['name'],
+        through: {
+          model: db.Gift,
+          attributes: []
+        }
+      }
+    ],
+    order: ['name']
+  }).then((gifts) => {
+    const list = gifts.filter(gift => gift.Villagers.length > 0).sort((a, b) => a.Villagers.length > b.Villagers.length ? -1 : 1)
+    res.json(list)
+  }).catch(error => {
+    console.log(error.message);
+    res.status(500).send(error.message)
+  })
+})
+
 // GET all gifts, with associated villagers, by preference
 router.get("/api/gifts/:preference", function (req, res) {
   db.Item.findAll({
