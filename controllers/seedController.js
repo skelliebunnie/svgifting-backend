@@ -316,9 +316,17 @@ router.post("/api/seed/locations", function (req, res) {
       name: "Desert",
       SubRegionId: 7
     },
-    { // 41
+    { // 52
       name: "Desert Lake",
       SubRegionId: 7
+    },
+    { // 53
+      name: "The Beach",
+      SubRegionId: 5
+    },
+    { // 54
+      name: "Tidepools",
+      SubRegionId: 5
     }
   ]).then(seeded => {
     res.json(seeded)
@@ -851,7 +859,7 @@ router.post("/api/seed/animals", function(req, res) {
 })
 
 // seed cooked goods
-router.post("/api/seed/cooking", function (req, res) {
+router.post("/api/seed/items/cooking", function (req, res) {
   db.Item.bulkCreate([
     {
       name: "Complete Breakfast",
@@ -1255,7 +1263,7 @@ router.post("/api/seed/cooking", function (req, res) {
 });
 
 // seed forage
-router.post("/api/seed/forage", function(req, res) {
+router.post("/api/seed/items/forage", function(req, res) {
   db.Item.bulkCreate([
     {
       name: "Leek",
@@ -1325,7 +1333,7 @@ router.post("/api/seed/forage", function(req, res) {
     .catch(err => res.status(500).json(err))
 });
 
-router.post("/api/seed/artisan-goods", function(req, res) {
+router.post("/api/seed/items/artisan-goods", function(req, res) {
   db.Item.bulkCreate([
     {
       name: "Coffee",
@@ -1416,7 +1424,7 @@ router.post("/api/seed/artisan-goods", function(req, res) {
     .catch(err => res.status(500).json(err))
 });
 
-router.post("/api/seed/animal-products", function(req, res) {
+router.post("/api/seed/items/animal-products", function(req, res) {
   db.Item.bulkCreate([
     {
       name: "Duck Feather",
@@ -1452,7 +1460,7 @@ router.post("/api/seed/animal-products", function(req, res) {
     .catch(err => res.status(500).json(err))
 });
 
-router.post("/api/seed/crops", function(req, res) {
+router.post("/api/seed/items/crops", function(req, res) {
   db.Item.bulkCreate([
     {
       name: "Beet",
@@ -1610,7 +1618,7 @@ router.post("/api/seed/crops", function(req, res) {
     .catch(err => res.status(500).json(err))
 });
 
-router.post("/api/seed/minerals-gems-geodes", function(req, res) {
+router.post("/api/seed/items/minerals-gems-geodes", function(req, res) {
   db.Item.bulkCreate([
     {
       name: "Tigerseye",
@@ -1700,7 +1708,7 @@ router.post("/api/seed/minerals-gems-geodes", function(req, res) {
     .catch(err => res.status(500).json(err))
 });
 
-router.post("/api/seed/fish", function(req, res) {
+router.post("/api/seed/items/fish", function(req, res) {
   db.Item.bulkCreate([
     {
       name: "Lobster",
@@ -1785,7 +1793,7 @@ router.post("/api/seed/fish", function(req, res) {
     .catch(err => res.status(500).json(err))
 });
 
-router.post("/api/seed/other", function(req, res) {
+router.post("/api/seed/items/other", function(req, res) {
   db.Item.bulkCreate([
     {
       name: "Battery Pack",
@@ -1853,369 +1861,5 @@ router.post("/api/seed/other", function(req, res) {
     .then(seeded => res.json(seeded))
     .catch(err => res.status(500).json(err))
 });
-
-// router.post("/api/seed/gifts", function(req, res) {
-//   db.Gift.bulkCreate([
-//     {
-//       VillagerId: 1,
-//       ItemId: 1,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 1,
-//       ItemId: 2,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 4,
-//       ItemId: 11,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 4,
-//       ItemId: 12,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 4,
-//       ItemId: 13,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 4,
-//       ItemId: 14,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 4,
-//       ItemId: 15,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 4,
-//       ItemId: 16,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 5,
-//       ItemId: 17,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 5,
-//       ItemId: 18,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 5,
-//       ItemId: 19,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 5,
-//       ItemId: 20,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 5,
-//       ItemId: 21,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 6,
-//       ItemId: 22,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 6,
-//       ItemId: 23,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 6,
-//       ItemId: 24,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 6,
-//       ItemId: 25,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 7,
-//       ItemId: 26,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 7,
-//       ItemId: 27,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 7,
-//       ItemId: 28,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 7,
-//       ItemId: 29,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 7,
-//       ItemId: 30,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 8,
-//       ItemId: 31,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 8,
-//       ItemId: 32,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 8,
-//       ItemId: 33,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 9,
-//       ItemId: 34,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 9,
-//       ItemId: 35,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 9,
-//       ItemId: 36,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 9,
-//       ItemId: 37,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 9,
-//       ItemId: 38,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 9,
-//       ItemId: 39,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 9,
-//       ItemId: 40,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 10,
-//       ItemId: 34,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 10,
-//       ItemId: 41,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 10,
-//       ItemId: 42,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 10,
-//       ItemId: 43,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 10,
-//       ItemId: 44,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 10,
-//       ItemId: 45,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 10,
-//       ItemId: 46,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 10,
-//       ItemId: 47,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 10,
-//       ItemId: 48,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 11,
-//       ItemId: 49,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 11,
-//       ItemId: 50,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 11,
-//       ItemId: 51,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 11,
-//       ItemId: 52,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 12,
-//       ItemId: 53,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 12,
-//       ItemId: 54,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 12,
-//       ItemId: 55,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 12,
-//       ItemId: 56,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 12,
-//       ItemId: 57,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 12,
-//       ItemId: 58,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 12,
-//       ItemId: 21,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 13,
-//       ItemId: 7,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 13,
-//       ItemId: 59,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 13,
-//       ItemId: 60,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 13,
-//       ItemId: 61,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 13,
-//       ItemId: 62,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 13,
-//       ItemId: 63,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 13,
-//       ItemId: 65,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 13,
-//       ItemId: 66,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 13,
-//       ItemId: 67,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 13,
-//       ItemId: 33,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 14,
-//       ItemId: 7,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 14,
-//       ItemId: 43,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 14,
-//       ItemId: 68,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 14,
-//       ItemId: 69,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 14,
-//       ItemId: 54,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 14,
-//       ItemId: 70,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 14,
-//       ItemId: 71,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 14,
-//       ItemId: 72,
-//       preference: 'love'
-//     },
-//     {
-//       VillagerId: 14,
-//       ItemId: 12,
-//       preference: 'love'
-//     }
-//   ]).then(seeded => {
-//     res.json(seeded);
-//   }).catch(function (error) {
-//     res.status(500).json(error)
-//   });
-// });
 
 module.exports = router;

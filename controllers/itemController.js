@@ -12,7 +12,6 @@ router.post('/api/item', function(req, res) {
 
 router.get('/api/items', function(req, res) {
   db.Item.findAll({
-    attributes: ['id', 'name', 'source', 'sellPrice', 'edible', 'difficulty', 'behavior', 'size', 'initialGrowthTime', 'reproductionTime', 'processingTime', 'EquipmentId', 'AnimalId', 'LocationId', 'TypeId'],
     order: ['name']
   }).then(items => {
     return res.json(items);
@@ -29,12 +28,24 @@ router.get('/api/item/:name', function(req, res) {
   }).catch(err => res.status(500).json(err));
 })
 
-// router.put('/api/write', function(req, res) {
-  
-// })
+// post for new, put for update
+// can I use post for upsert?
+router.post('/api/item/upsert', function(req, res) {
+  db.Item.upsert(
+    req.body,
+    { returning: true }
+  )
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      console.error(err.message);
+      res.status(500).json({message: err.message})
+    });
+})
 
-// router.delete('/api/delete', function(req, res) {
+router.delete('/api/item/delete/:id', function(req, res) {
   
-// })
+})
 
 module.exports = router;

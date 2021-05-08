@@ -14,8 +14,6 @@ module.exports = function(sequelize, DataTypes) {
     // Locations may have many villagers as residents
     Location.hasMany(models.Villager, { as: "residents" });
 
-    Location.hasMany(models.Item);
-
     Location.belongsTo(models.SubRegion)
   }
 

@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   SubRegion.associate = function(models) {
     SubRegion.belongsTo(models.Region)
-    SubRegion.belongsToMany(models.Item, { through: models.ItemAvailability })
+    // SubRegion.belongsToMany(models.Item, { through: models.ItemAvailability })
     SubRegion.hasMany(models.Location)
   }
   return SubRegion;

@@ -17,7 +17,7 @@ router.post("/api/gift", function (req, res) {
 // GET all gifts
 router.get("/api/gifts", function (req, res) {
   db.Item.findAll({
-    attributes: ['name'],
+    attributes: ['id', 'name'],
     include: [
       {
         model: db.Villager,
@@ -41,7 +41,7 @@ router.get("/api/gifts", function (req, res) {
 // GET all gifts, with associated villagers, by preference
 router.get("/api/gifts/:preference", function (req, res) {
   db.Item.findAll({
-    attributes: ['name'],
+    attributes: ['id','name'],
     include: [
       {
         model: db.Villager,
@@ -68,7 +68,7 @@ router.get("/api/gifts/:preference", function (req, res) {
 // GET one gift (by name)
 router.get("/api/gift/:name", function (req, res) {
   db.Item.findOne({
-    attributes: ['name'],
+    attributes: ['id', 'name'],
     where: {
       name: req.params.name
     },

@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   const Item = sequelize.define("Item", {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -22,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
     Item.belongsTo(models.Equipment, { allowNull: true })
     Item.belongsTo(models.Animal, { allowNull: true })
 
-    Item.belongsToMany(models.Season, { through: models.ItemAvailability })
+    Item.belongsToMany(models.Season, { through: models.ItemAvailability }, { allowNull: true })
   }
   return Item;
 }
