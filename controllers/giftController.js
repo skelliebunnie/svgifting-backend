@@ -91,19 +91,20 @@ router.get("/api/gift/:name", function (req, res) {
 })
 
 
-// UPDATE gift information
-router.put("/api/gift/:id", function (req, res) {
-  db.Gift.update(req.body,
-  {
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(updatedGift => {
-    res.json(updatedGift)
-  }).catch(error => {
-    res.status(500).send(error.message)
-  })
+// UPSERT gift information
+router.post("/api/gift/upsert", function (req, res) {
+  console.log("UPSERT", req.body)
+  db.Gift.upsert(
+    req.body,
+    { returning: true }
+  )
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      console.error(err.message);
+      res.status(500).json({message: err.message})
+    });
 })
 
 // DELETE gift
