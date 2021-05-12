@@ -19,7 +19,7 @@ router.post("/api/villager", function (req, res) {
 router.get("/api/villagers", function (req, res) {
   db.Villager.findAll({
     attributes: ['name', 'birthdayDate', 'checkupDate', 'available', 'id'],
-    order: ['name'],
+    order: [['name'], [db.Item, 'name']],
     include: [
       {
         model: db.Item,
