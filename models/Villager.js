@@ -24,8 +24,8 @@ module.exports = function(sequelize, DataTypes) {
 
     Villager.hasMany(models.Item, { as: 'Gift' })
     
-    Villager.belongsTo(models.Season, { foreignKey: 'birthdaySeasonId', as: 'birthdaySeason' })
-    Villager.belongsTo(models.Season, { foreignKey: 'checkupSeasonId', as: 'checkupSeason' })
+    // Villager.belongsTo(models.Season, { foreignKey: 'birthdaySeasonId', as: 'birthdaySeason' })
+    // Villager.belongsTo(models.Season, { foreignKey: 'checkupSeasonId', as: 'checkupSeason' })
 
     Villager.belongsTo(models.Location);
 

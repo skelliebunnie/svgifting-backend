@@ -49,6 +49,14 @@ app.use(animalRoutes);
 const locationRoutes = require("./controllers/locationController.js");
 app.use(locationRoutes);
 
+// season routes
+const seasonRoutes = require("./controllers/seasonController.js");
+app.use(seasonRoutes);
+
+// event routes
+const eventRoutes = require("./controllers/eventController.js");
+app.use(eventRoutes);
+
 const PORT = process.env.PORT || 3030;
 db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {

@@ -30,16 +30,6 @@ router.get("/api/villagers", function (req, res) {
         }
       },
       {
-        model: db.Season,
-        attributes: ['name'],
-        as: 'birthdaySeason'
-      },
-      {
-        model: db.Season,
-        attributes: ['name'],
-        as: 'checkupSeason'
-      },
-      {
         model: db.Location,
         attributes: ['name'],
         include: [
