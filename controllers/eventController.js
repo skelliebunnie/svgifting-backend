@@ -34,10 +34,28 @@ router.get('/api/events/:season', function(req, res) {
         attributes: ['name']
       }
     ],
-    order: ['seasonId', 'day']
+    order: [
+      ['seasonId', 'ASC'],
+      ['day', 'ASC'],
+      ['type', 'DESC']
+    ],
   })
     .then(results => res.json(results))
     .catch(err => res.status(500).json(err))
+})
+
+router.post('/api/event/upsert', function(req, res) {
+  db.Event.upsert(
+    req.body,
+    { returning: true }
+  )
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      console.error(err.message);
+      res.status(500).json({message: err.message})
+    });
 })
 
 router.put('/api/write', function(req, res) {
