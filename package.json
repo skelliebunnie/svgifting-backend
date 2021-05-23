@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
-    "db:makemigrations": "./mode_modules/sequelize-auto-migrations/bin/makemigration.js"
+    "start": "nodemon server.js"
   },
   "keywords": [
     "Stardew Valley",
@@ -29,9 +28,5 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.2",
     "uuid": "^8.3.2"
-  },
-  "devDependencies": {
-    "sequelize-auto-migrations": "git://github.com/scimonster/sequelize-auto-migrations.git#a063aa6535a3f580623581bf866cef2d609531ba",
-    "sequelize-cli": "^6.2.0"
   }
 }
