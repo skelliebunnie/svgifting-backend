@@ -4,7 +4,8 @@
     "password": "password",
     "database": "svgifting",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "tables": ["animals", "buffs", "buildings", "dungeonlocations", "equipment", "events", "gifts", "ingredients", "itemavailabilities", "items", "locations", "professions", "recipebuffs", "recipes", "seasons", "skills", "stats", "subregions", "types", "villagerfamily", "villagerfriends", "villagers"]
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",

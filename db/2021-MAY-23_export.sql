@@ -19,10 +19,10 @@
 -- Table structure for table `animals`
 --
 
-DROP TABLE IF EXISTS `animals`;
+-- DROP TABLE IF EXISTS `animals`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `animals` (
+CREATE TABLE IF NOT EXISTS `animals` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `source` varchar(255) DEFAULT NULL,
@@ -50,10 +50,10 @@ UNLOCK TABLES;
 -- Table structure for table `buffs`
 --
 
-DROP TABLE IF EXISTS `buffs`;
+-- DROP TABLE IF EXISTS `buffs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `buffs` (
+CREATE TABLE IF NOT EXISTS `buffs` (
   `id` int NOT NULL AUTO_INCREMENT,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -74,10 +74,10 @@ UNLOCK TABLES;
 -- Table structure for table `buildings`
 --
 
-DROP TABLE IF EXISTS `buildings`;
+-- DROP TABLE IF EXISTS `buildings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `buildings` (
+CREATE TABLE IF NOT EXISTS `buildings` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `cost` int NOT NULL,
@@ -104,10 +104,10 @@ UNLOCK TABLES;
 -- Table structure for table `dungeonlocations`
 --
 
-DROP TABLE IF EXISTS `dungeonlocations`;
+-- DROP TABLE IF EXISTS `dungeonlocations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `dungeonlocations` (
+CREATE TABLE IF NOT EXISTS `dungeonlocations` (
   `id` int NOT NULL AUTO_INCREMENT,
   `Floors` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
@@ -129,10 +129,10 @@ UNLOCK TABLES;
 -- Table structure for table `equipment`
 --
 
-DROP TABLE IF EXISTS `equipment`;
+-- DROP TABLE IF EXISTS `equipment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `equipment` (
+CREATE TABLE IF NOT EXISTS `equipment` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `source` varchar(255) DEFAULT NULL,
@@ -156,10 +156,10 @@ UNLOCK TABLES;
 -- Table structure for table `events`
 --
 
-DROP TABLE IF EXISTS `events`;
+-- DROP TABLE IF EXISTS `events`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `events` (
+CREATE TABLE IF NOT EXISTS `events` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `day` int NOT NULL DEFAULT '0',
@@ -167,12 +167,16 @@ CREATE TABLE `events` (
   `updatedAt` datetime NOT NULL,
   `VillagerId` int DEFAULT NULL,
   `SeasonId` int DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `startTime` time DEFAULT '09:00:00',
+  `endTime` time DEFAULT '22:00:00',
+  `SubRegionId` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `VillagerId` (`VillagerId`),
   KEY `SeasonId` (`SeasonId`),
   CONSTRAINT `events_ibfk_1` FOREIGN KEY (`VillagerId`) REFERENCES `villagers` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `events_ibfk_2` FOREIGN KEY (`SeasonId`) REFERENCES `seasons` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +185,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'Alex\'s Birthday',13,'2021-05-17 00:00:00','2021-05-17 00:00:00',1,2),(2,'Evelyn\'s Birthday',20,'2021-05-17 10:56:09','2021-05-17 10:56:09',2,4),(3,'George\'s Birthday',24,'2021-05-17 10:56:09','2021-05-17 10:56:09',3,3),(4,'Elliott\'s Birthday',5,'2021-05-17 10:56:09','2021-05-17 10:56:09',4,3),(5,'Harvey\'s Birthday',14,'2021-05-17 10:56:09','2021-05-17 10:56:09',5,4),(6,'Sam\'s Birthday',17,'2021-05-17 10:56:09','2021-05-17 10:56:09',6,2),(7,'Sebastian\'s Birthday',10,'2021-05-17 10:56:09','2021-05-17 10:56:09',7,4),(8,'Shane\'s Birthday',20,'2021-05-17 10:56:09','2021-05-17 10:56:09',8,1),(9,'Abigail\'s Birthday',13,'2021-05-17 10:58:38','2021-05-17 10:58:38',9,3),(10,'Emily\'s Birthday',27,'2021-05-17 10:58:38','2021-05-17 10:58:38',10,1),(11,'Haley\'s Birthday',14,'2021-05-17 10:58:38','2021-05-17 10:58:38',11,1),(12,'Leah\'s Birthday',23,'2021-05-17 10:58:38','2021-05-17 10:58:38',12,4),(13,'Maru\'s Birthday',10,'2021-05-17 10:58:38','2021-05-17 10:58:38',13,2),(14,'Penny\'s Birthday',2,'2021-05-17 10:58:38','2021-05-17 10:58:38',14,3),(15,'Pam\'s Birthday',18,'2021-05-17 10:58:38','2021-05-17 10:58:38',15,1),(16,'Gus\' Birthday',8,'2021-05-17 11:05:36','2021-05-17 11:05:36',16,2),(17,'Caroline\'s Birthday',7,'2021-05-17 11:05:36','2021-05-17 11:05:36',17,4),(18,'Pierre\'s Birthday',28,'2021-05-17 11:05:36','2021-05-17 11:05:36',18,1),(19,'Jodi\'s Birthday',11,'2021-05-17 11:05:36','2021-05-17 11:05:36',19,3),(20,'Kent\'s Birthday',4,'2021-05-17 11:05:36','2021-05-17 11:05:36',20,1),(21,'Jas\' Birthday',4,'2021-05-17 11:05:36','2021-05-17 11:05:36',21,2),(22,'Vincent\'s Birthday',10,'2021-05-17 11:05:36','2021-05-17 11:05:36',22,1),(23,'Lewis\' Birthday',7,'2021-05-17 11:05:36','2021-05-17 11:05:36',23,1),(24,'Linus\' Birthday',3,'2021-05-17 11:05:36','2021-05-17 11:05:36',24,4),(25,'Marnie\'s Birthday',18,'2021-05-17 11:05:36','2021-05-17 11:05:36',25,3),(26,'Robin\'s Birthday',21,'2021-05-17 11:05:36','2021-05-17 11:05:36',26,3),(27,'Demetrius\' Birthday',19,'2021-05-17 11:05:36','2021-05-17 11:05:36',27,2),(28,'Willy\'s Birthday',24,'2021-05-17 11:05:36','2021-05-17 11:05:36',28,2),(29,'Krobus\' Birthday',1,'2021-05-17 11:05:36','2021-05-17 11:05:36',29,4),(30,'Dwarf\'s Birthday',22,'2021-05-17 11:05:36','2021-05-17 11:05:36',29,2),(31,'Wizard\'s Birthday',17,'2021-05-17 11:05:36','2021-05-17 11:05:36',31,4),(32,'Sandy\'s Birthday',15,'2021-05-17 11:05:36','2021-05-17 11:05:36',32,3),(33,'Clint\'s Birthday',26,'2021-05-17 11:05:36','2021-05-17 11:05:36',33,4),(34,'Leo\'s Birthday',26,'2021-05-17 11:05:36','2021-05-17 11:05:36',34,2);
+INSERT INTO `events` VALUES (1,'Alex\'s Birthday',13,'2021-05-17 00:00:00','2021-05-17 00:00:00',1,2,'birthday','02:00:00','23:59:59',NULL),(2,'Evelyn\'s Birthday',20,'2021-05-17 10:56:09','2021-05-17 10:56:09',2,4,'birthday','02:00:00','23:59:59',NULL),(3,'George\'s Birthday',24,'2021-05-17 10:56:09','2021-05-17 10:56:09',3,3,'birthday','02:00:00','23:59:59',NULL),(4,'Elliott\'s Birthday',5,'2021-05-17 10:56:09','2021-05-17 10:56:09',4,3,'birthday','02:00:00','23:59:59',NULL),(5,'Harvey\'s Birthday',14,'2021-05-17 10:56:09','2021-05-17 10:56:09',5,4,'birthday','02:00:00','23:59:59',NULL),(6,'Sam\'s Birthday',17,'2021-05-17 10:56:09','2021-05-17 10:56:09',6,2,'birthday','02:00:00','23:59:59',NULL),(7,'Sebastian\'s Birthday',10,'2021-05-17 10:56:09','2021-05-17 10:56:09',7,4,'birthday','02:00:00','23:59:59',NULL),(8,'Shane\'s Birthday',20,'2021-05-17 10:56:09','2021-05-17 10:56:09',8,1,'birthday','02:00:00','23:59:59',NULL),(9,'Abigail\'s Birthday',13,'2021-05-17 10:58:38','2021-05-17 10:58:38',9,3,'birthday','02:00:00','23:59:59',NULL),(10,'Emily\'s Birthday',27,'2021-05-17 10:58:38','2021-05-17 10:58:38',10,1,'birthday','02:00:00','23:59:59',NULL),(12,'Leah\'s Birthday',23,'2021-05-17 10:58:38','2021-05-17 10:58:38',12,4,'birthday','02:00:00','23:59:59',NULL),(13,'Maru\'s Birthday',10,'2021-05-17 10:58:38','2021-05-17 10:58:38',13,2,'birthday','02:00:00','23:59:59',NULL),(14,'Penny\'s Birthday',2,'2021-05-17 10:58:38','2021-05-17 10:58:38',14,3,'birthday','02:00:00','23:59:59',NULL),(15,'Pam\'s Birthday',18,'2021-05-17 10:58:38','2021-05-17 10:58:38',15,1,'birthday','02:00:00','23:59:59',NULL),(16,'Gus\' Birthday',8,'2021-05-17 11:05:36','2021-05-17 11:05:36',16,2,'birthday','02:00:00','23:59:59',NULL),(17,'Caroline\'s Birthday',7,'2021-05-17 11:05:36','2021-05-17 11:05:36',17,4,'birthday','02:00:00','23:59:59',NULL),(18,'Pierre\'s Birthday',28,'2021-05-17 11:05:36','2021-05-17 11:05:36',18,1,'birthday','02:00:00','23:59:59',NULL),(19,'Jodi\'s Birthday',11,'2021-05-17 11:05:36','2021-05-17 11:05:36',19,3,'birthday','02:00:00','23:59:59',NULL),(20,'Kent\'s Birthday',4,'2021-05-17 11:05:36','2021-05-17 11:05:36',20,1,'birthday','02:00:00','23:59:59',NULL),(21,'Jas\' Birthday',4,'2021-05-17 11:05:36','2021-05-17 11:05:36',21,2,'birthday','02:00:00','23:59:59',NULL),(22,'Vincent\'s Birthday',10,'2021-05-17 11:05:36','2021-05-17 11:05:36',22,1,'birthday','02:00:00','23:59:59',NULL),(23,'Lewis\' Birthday',7,'2021-05-17 11:05:36','2021-05-17 11:05:36',23,1,'birthday','02:00:00','23:59:59',NULL),(24,'Linus\' Birthday',3,'2021-05-17 11:05:36','2021-05-17 11:05:36',24,4,'birthday','02:00:00','23:59:59',NULL),(25,'Marnie\'s Birthday',18,'2021-05-17 11:05:36','2021-05-17 11:05:36',25,3,'birthday','02:00:00','23:59:59',NULL),(26,'Robin\'s Birthday',21,'2021-05-17 11:05:36','2021-05-17 11:05:36',26,3,'birthday','02:00:00','23:59:59',NULL),(27,'Demetrius\' Birthday',19,'2021-05-17 11:05:36','2021-05-17 11:05:36',27,2,'birthday','02:00:00','23:59:59',NULL),(28,'Willy\'s Birthday',24,'2021-05-17 11:05:36','2021-05-17 11:05:36',28,2,'birthday','02:00:00','23:59:59',NULL),(29,'Krobus\' Birthday',1,'2021-05-17 11:05:36','2021-05-17 11:05:36',29,4,'birthday','02:00:00','23:59:59',NULL),(30,'Dwarf\'s Birthday',22,'2021-05-17 11:05:36','2021-05-17 11:05:36',29,2,'birthday','02:00:00','23:59:59',NULL),(31,'Wizard\'s Birthday',17,'2021-05-17 11:05:36','2021-05-17 11:05:36',31,4,'birthday','02:00:00','23:59:59',NULL),(32,'Sandy\'s Birthday',15,'2021-05-17 11:05:36','2021-05-17 11:05:36',32,3,'birthday','02:00:00','23:59:59',NULL),(33,'Clint\'s Birthday',26,'2021-05-17 11:05:36','2021-05-17 11:05:36',33,4,'birthday','02:00:00','23:59:59',NULL),(34,'Leo\'s Birthday',26,'2021-05-17 11:05:36','2021-05-17 11:05:36',34,2,'birthday','02:00:00','23:59:59',NULL),(37,'Haley\'s Birthday',14,'2021-05-17 11:53:43','2021-05-17 11:53:43',11,1,'birthday','02:00:00','23:59:59',NULL),(38,'Egg Festival',13,'2021-05-17 19:57:11','2021-05-17 19:57:11',NULL,1,'festival','09:00:00','14:00:00',3),(39,'Flower Dance',24,'2021-05-17 20:04:49','2021-05-17 20:04:49',NULL,1,'festival','09:00:00','14:00:00',4),(40,'Luau',11,'2021-05-17 20:23:57','2021-05-17 20:23:57',NULL,2,'festival','09:00:00','14:00:00',5),(41,'Dance of the Moonlight Jellies',28,'2021-05-17 20:24:08','2021-05-17 20:24:08',NULL,2,'festival','17:00:00','23:59:59',5),(46,'Extra Forageables, beach',12,'2021-05-17 21:32:27','2021-05-17 21:32:27',NULL,2,'other','09:00:00','22:00:00',5),(47,'Extra Forageables, beach',13,'2021-05-17 21:33:07','2021-05-17 21:33:07',NULL,2,'other','09:00:00','22:00:00',5),(48,'Extra Forageables, beach',14,'2021-05-17 21:33:48','2021-05-17 21:33:48',NULL,2,'other','09:00:00','22:00:00',5),(49,'Salmonberry Season',15,'2021-05-17 21:34:52','2021-05-17 21:34:52',NULL,1,'other','09:00:00','22:00:00',NULL),(50,'Salmonberry Season',16,'2021-05-17 21:36:34','2021-05-17 21:36:34',NULL,1,'other','09:00:00','22:00:00',NULL),(51,'Salmonberry Season',17,'2021-05-17 21:38:24','2021-05-17 21:38:24',NULL,1,'other','09:00:00','22:00:00',NULL),(55,'Stardew Valley Fair',16,'2021-05-17 21:42:20','2021-05-17 21:42:20',NULL,3,'festival','09:00:00','15:00:00',3),(56,'Spirit\'s Eve',27,'2021-05-17 21:42:30','2021-05-17 21:42:30',NULL,3,'festival','22:00:00','23:59:59',3),(57,'Blackberry season',8,'2021-05-17 21:42:43','2021-05-17 21:42:43',NULL,3,'other','09:00:00','22:00:00',NULL),(58,'Blackberry season',9,'2021-05-17 21:42:46','2021-05-17 21:42:46',NULL,3,'other','09:00:00','22:00:00',NULL),(59,'Blackberry season',10,'2021-05-17 21:42:48','2021-05-17 21:42:48',NULL,3,'other','09:00:00','22:00:00',NULL),(60,'Festival of Ice',8,'2021-05-17 21:43:42','2021-05-17 21:43:42',NULL,4,'festival','09:00:00','14:00:00',5),(61,'Night Market',15,'2021-05-17 21:43:54','2021-05-17 21:43:54',NULL,4,'other','17:00:00','23:59:59',NULL),(62,'Night Market',16,'2021-05-17 21:43:57','2021-05-17 21:43:57',NULL,4,'other','17:00:00','23:59:59',5),(63,'Night Market',17,'2021-05-17 21:44:01','2021-05-17 21:44:01',NULL,4,'other','17:00:00','23:59:59',5),(64,'Feast of the Winter Star',25,'2021-05-17 21:44:13','2021-05-17 21:44:13',NULL,4,'festival','09:00:00','14:00:00',3),(65,'Alex\'s Checkup',16,'2021-05-17 22:12:20','2021-05-17 22:12:20',1,2,'checkup','09:00:00','22:00:00',NULL),(66,'Abigail\'s Checkup',4,'2021-05-17 22:58:10','2021-05-17 22:58:10',9,1,'checkup','09:00:00','22:00:00',NULL),(67,'Caroline\'s Checkup',25,'2021-05-17 22:59:14','2021-05-17 22:59:14',17,3,'checkup','09:00:00','22:00:00',NULL),(68,'Sebastian\'s Checkup',4,'2021-05-17 23:04:16','2021-05-17 23:04:16',7,2,'checkup','09:00:00','22:00:00',NULL),(69,'Sam\'s Checkup',11,'2021-05-17 23:04:51','2021-05-17 23:04:51',6,3,'checkup','09:00:00','22:00:00',NULL),(70,'Vincent\'s Checkup',11,'2021-05-17 23:05:37','2021-05-17 23:05:37',22,1,'checkup','09:00:00','22:00:00',NULL),(71,'Jas\' Checkup',18,'2021-05-17 23:08:18','2021-05-17 23:08:18',21,4,'checkup','09:00:00','22:00:00',NULL),(72,'Marnie\'s Checkup',18,'2021-05-17 23:38:20','2021-05-17 23:38:20',25,3,'checkup','09:00:00','22:00:00',NULL),(73,'Lewis\' Checkup',9,'2021-05-17 23:38:57','2021-05-17 23:38:57',23,3,'checkup','09:00:00','22:00:00',NULL),(74,'Elliott\'s Checkup',9,'2021-05-17 23:39:30','2021-05-17 23:39:30',4,2,'checkup','09:00:00','22:00:00',NULL),(75,'Demetrius\' Checkup',25,'2021-05-17 23:40:03','2021-05-17 23:40:03',27,2,'checkup','09:00:00','22:00:00',NULL),(76,'Haley\'s Checkup',9,'2021-05-18 00:17:50','2021-05-18 00:17:50',11,1,'checkup','11:30:00','16:00:00',NULL),(77,'Emily visits Sandy',15,'2021-05-18 00:19:51','2021-05-18 00:19:51',10,3,'other','09:00:00','22:00:00',NULL),(78,'Emily\'s Checkup',11,'2021-05-18 06:12:17','2021-05-18 06:12:17',10,4,'checkup','09:00:00','22:00:00',NULL),(79,'Clint\'s Checkup',16,'2021-05-18 06:19:23','2021-05-18 06:19:23',33,4,'checkup','09:00:00','22:00:00',NULL),(80,'Penny\'s Checkup',4,'2021-05-18 07:06:03','2021-05-18 07:06:03',14,4,'checkup','09:00:00','22:00:00',NULL),(81,'Pam\'s Checkup',25,'2021-05-18 07:07:30','2021-05-18 07:07:30',15,1,'checkup','09:00:00','22:00:00',NULL),(82,'Gus\' Checkup',4,'2021-05-18 07:08:42','2021-05-18 07:08:42',16,3,'checkup','09:00:00','22:00:00',NULL),(83,'With Vincent for his checkup',11,'2021-05-18 07:18:59','2021-05-18 07:18:59',19,1,'other','09:00:00','22:00:00',NULL),(84,'Jodi\'s Checkup',18,'2021-05-18 07:26:25','2021-05-18 07:26:25',19,1,'checkup','09:00:00','22:00:00',NULL),(86,'Evelyn\'s Checkup',2,'2021-05-18 21:49:38','2021-05-18 21:49:38',2,1,'checkup','10:30:00','16:00:00',NULL),(87,'George\'s Checkup',23,'2021-05-18 21:51:32','2021-05-18 21:51:32',3,1,'checkup','10:30:00','16:00:00',NULL),(88,'Evelyn with George @ his checkup',23,'2021-05-18 21:52:03','2021-05-18 21:52:03',2,1,'other','10:40:00','16:10:00',NULL),(90,'Evelyn\'s Summer Checkup',2,'2021-05-18 21:53:37','2021-05-18 21:53:37',2,2,'checkup','10:30:00','16:00:00',NULL),(91,'George\'s Summer Checkup',23,'2021-05-18 21:54:05','2021-05-18 21:54:05',3,2,'checkup','10:30:00','16:00:00',NULL),(92,'Evelyn\'s Fall Checkup',2,'2021-05-18 21:54:28','2021-05-18 21:54:28',2,3,'checkup','10:30:00','16:00:00',NULL),(93,'George\'s Fall Checkup',23,'2021-05-18 21:54:49','2021-05-18 21:54:49',3,3,'checkup','10:30:00','16:00:00',NULL),(94,'Evelyn\'s Winter Checkup',2,'2021-05-18 21:55:37','2021-05-18 21:55:37',2,4,'other','10:30:00','16:00:00',NULL),(95,'George\'s Winter Checkup',23,'2021-05-18 21:56:07','2021-05-18 21:56:07',3,4,'checkup','10:30:00','16:00:00',NULL),(96,'Evelyn with George @ his checkup',23,'2021-05-18 21:56:31','2021-05-18 21:56:31',2,4,'other','10:40:00','16:10:00',NULL),(97,'Evelyn with George @ his checkup',23,'2021-05-18 21:56:57','2021-05-18 21:56:57',2,3,'other','10:40:00','16:10:00',NULL),(98,'Evelyn with George @ his checkup',23,'2021-05-18 21:57:29','2021-05-18 21:57:29',2,2,'other','10:40:00','16:10:00',NULL);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,10 +193,10 @@ UNLOCK TABLES;
 -- Table structure for table `gifts`
 --
 
-DROP TABLE IF EXISTS `gifts`;
+-- DROP TABLE IF EXISTS `gifts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `gifts` (
+CREATE TABLE IF NOT EXISTS `gifts` (
   `preference` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -219,10 +223,10 @@ UNLOCK TABLES;
 -- Table structure for table `ingredients`
 --
 
-DROP TABLE IF EXISTS `ingredients`;
+-- DROP TABLE IF EXISTS `ingredients`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ingredients` (
+CREATE TABLE IF NOT EXISTS `ingredients` (
   `name` varchar(255) NOT NULL,
   `quantity` int NOT NULL DEFAULT '1',
   `createdAt` datetime NOT NULL,
@@ -249,10 +253,10 @@ UNLOCK TABLES;
 -- Table structure for table `itemavailabilities`
 --
 
-DROP TABLE IF EXISTS `itemavailabilities`;
+-- DROP TABLE IF EXISTS `itemavailabilities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `itemavailabilities` (
+CREATE TABLE IF NOT EXISTS `itemavailabilities` (
   `chance` float DEFAULT NULL,
   `time` varchar(255) DEFAULT NULL,
   `weather` varchar(255) DEFAULT NULL,
@@ -283,10 +287,10 @@ UNLOCK TABLES;
 -- Table structure for table `items`
 --
 
-DROP TABLE IF EXISTS `items`;
+-- DROP TABLE IF EXISTS `items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `items` (
+CREATE TABLE IF NOT EXISTS `items` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `source` varchar(255) DEFAULT NULL,
@@ -333,10 +337,10 @@ UNLOCK TABLES;
 -- Table structure for table `locations`
 --
 
-DROP TABLE IF EXISTS `locations`;
+-- DROP TABLE IF EXISTS `locations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `locations` (
+CREATE TABLE IF NOT EXISTS `locations` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `standardHours` varchar(255) DEFAULT NULL,
@@ -366,10 +370,10 @@ UNLOCK TABLES;
 -- Table structure for table `professions`
 --
 
-DROP TABLE IF EXISTS `professions`;
+-- DROP TABLE IF EXISTS `professions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `professions` (
+CREATE TABLE IF NOT EXISTS `professions` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,
@@ -394,10 +398,10 @@ UNLOCK TABLES;
 -- Table structure for table `recipebuffs`
 --
 
-DROP TABLE IF EXISTS `recipebuffs`;
+-- DROP TABLE IF EXISTS `recipebuffs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `recipebuffs` (
+CREATE TABLE IF NOT EXISTS `recipebuffs` (
   `id` int NOT NULL AUTO_INCREMENT,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -418,10 +422,10 @@ UNLOCK TABLES;
 -- Table structure for table `recipes`
 --
 
-DROP TABLE IF EXISTS `recipes`;
+-- DROP TABLE IF EXISTS `recipes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `recipes` (
+CREATE TABLE IF NOT EXISTS `recipes` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `source` varchar(255) DEFAULT NULL,
@@ -448,10 +452,10 @@ UNLOCK TABLES;
 -- Table structure for table `regions`
 --
 
-DROP TABLE IF EXISTS `regions`;
+-- DROP TABLE IF EXISTS `regions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `regions` (
+CREATE TABLE IF NOT EXISTS `regions` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `standardHours` varchar(255) DEFAULT NULL,
@@ -478,10 +482,10 @@ UNLOCK TABLES;
 -- Table structure for table `seasons`
 --
 
-DROP TABLE IF EXISTS `seasons`;
+-- DROP TABLE IF EXISTS `seasons`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `seasons` (
+CREATE TABLE IF NOT EXISTS `seasons` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `image` text,
@@ -505,10 +509,10 @@ UNLOCK TABLES;
 -- Table structure for table `skills`
 --
 
-DROP TABLE IF EXISTS `skills`;
+-- DROP TABLE IF EXISTS `skills`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `skills` (
+CREATE TABLE IF NOT EXISTS `skills` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,
@@ -530,10 +534,10 @@ UNLOCK TABLES;
 -- Table structure for table `stats`
 --
 
-DROP TABLE IF EXISTS `stats`;
+-- DROP TABLE IF EXISTS `stats`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `stats` (
+CREATE TABLE IF NOT EXISTS `stats` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,
@@ -555,10 +559,10 @@ UNLOCK TABLES;
 -- Table structure for table `subregions`
 --
 
-DROP TABLE IF EXISTS `subregions`;
+-- DROP TABLE IF EXISTS `subregions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `subregions` (
+CREATE TABLE IF NOT EXISTS `subregions` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,
@@ -584,10 +588,10 @@ UNLOCK TABLES;
 -- Table structure for table `types`
 --
 
-DROP TABLE IF EXISTS `types`;
+-- DROP TABLE IF EXISTS `types`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `types` (
+CREATE TABLE IF NOT EXISTS `types` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,
@@ -610,10 +614,10 @@ UNLOCK TABLES;
 -- Table structure for table `villagerfamily`
 --
 
-DROP TABLE IF EXISTS `villagerfamily`;
+-- DROP TABLE IF EXISTS `villagerfamily`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `villagerfamily` (
+CREATE TABLE IF NOT EXISTS `villagerfamily` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   `VillagerId` int NOT NULL,
@@ -638,10 +642,10 @@ UNLOCK TABLES;
 -- Table structure for table `villagerfriends`
 --
 
-DROP TABLE IF EXISTS `villagerfriends`;
+-- DROP TABLE IF EXISTS `villagerfriends`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `villagerfriends` (
+CREATE TABLE IF NOT EXISTS `villagerfriends` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   `VillagerId` int NOT NULL,
@@ -666,10 +670,10 @@ UNLOCK TABLES;
 -- Table structure for table `villagers`
 --
 
-DROP TABLE IF EXISTS `villagers`;
+-- DROP TABLE IF EXISTS `villagers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `villagers` (
+CREATE TABLE IF NOT EXISTS `villagers` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `birthdayDate` int DEFAULT NULL,
@@ -710,4 +714,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-17 11:10:25
+-- Dump completed on 2021-05-23 11:13:54
