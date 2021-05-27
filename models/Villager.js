@@ -21,6 +21,7 @@ module.exports = function(sequelize, DataTypes) {
   Villager.associate = function(models) {
     // gifts table is separate from the item tables
     Villager.belongsToMany(models.Item, { through: models.Gift });
+    Villager.belongsToMany(models.Season, { through: models.Event });
 
     Villager.hasMany(models.Item, { as: 'Gift' })
     

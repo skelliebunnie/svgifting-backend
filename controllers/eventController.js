@@ -24,6 +24,7 @@ router.get('/api/events/:season', function(req, res) {
     where: {
       SeasonId: req.params.season
     },
+    attributes: ["SeasonId", "SubRegionId", "VillagerId", "day", "endTime", "startTime", "name", "type", "id"],
     include: [
       {
         model: db.Villager,

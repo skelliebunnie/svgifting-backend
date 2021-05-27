@@ -44,6 +44,17 @@ router.get("/api/villagers", function (req, res) {
             ]
           }
         ]
+      },
+      {
+        model: db.Season,
+        attributes: ['id', 'name'],
+        through: {
+          model: db.Event,
+          attributes: ['id', 'day', 'type', 'name'],
+          where: {
+            type: 'birthday'
+          }
+        }
       }
     ]
   }).then((villagers) => {
