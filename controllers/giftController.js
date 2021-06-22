@@ -28,10 +28,15 @@ router.get("/api/gifts", function (req, res) {
         }
       }
     ],
-    order: ['name']
+    order: [
+      ['name', 'ASC'],
+      [db.Villager, 'name', 'ASC']
+    ]
   }).then((gifts) => {
-    const list = gifts.filter(gift => gift.Villagers.length > 0).sort((a, b) => a.Villagers.length > b.Villagers.length ? -1 : 1)
-    res.json(list)
+    const list = gifts.filter(gift => gift.Villagers.length > 0)
+      // .sort((a, b) => a.Villagers.length > b.Villagers.length ? -1 : 1)
+
+    res.json(list);
   }).catch(error => {
     console.log(error.message);
     res.status(500).send(error.message)
@@ -55,9 +60,14 @@ router.get("/api/gifts/:preference", function (req, res) {
         }
       }
     ],
-    order: ['name']
+    order: [
+      ['name', 'ASC'],
+      [db.Villager, 'name', 'ASC']
+    ]
   }).then((gifts) => {
-    const list = gifts.filter(gift => gift.Villagers.length > 0).sort((a, b) => a.Villagers.length > b.Villagers.length ? -1 : 1)
+    const list = gifts.filter((gift) => gift.Villagers.length > 0)
+      // .sort((a, b) => (a.Villagers.length > b.Villagers.length ? -1 : 1))
+
     res.json(list)
   }).catch(error => {
     console.log(error.message);
