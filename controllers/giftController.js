@@ -26,6 +26,14 @@ router.get("/api/gifts", function (req, res) {
           model: db.Gift,
           attributes: []
         }
+      },
+      {
+        model: db.Season,
+        attributes: ["name", "id"],
+        through: {
+          model: db.ItemAvailabilities,
+          attributes: []
+        }
       }
     ],
     order: [

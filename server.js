@@ -57,6 +57,18 @@ app.use(seasonRoutes);
 const eventRoutes = require("./controllers/eventController.js");
 app.use(eventRoutes);
 
+// TODO: recipe routes
+// const recipeRoutes = require("./controllers/recipeController.js");
+// app.use(recipeRoutes);
+
+// TODO: bundle routes
+// const bundleRoutes = require("./controllers/bundleController.js");
+// app.use(bundleRoutes);
+
+// TODO: quest routes
+// const questRoutes = require("./controllers/questController.js");
+// app.use(questRoutes);
+
 const PORT = process.env.PORT || 3030;
 db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {

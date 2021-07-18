@@ -17,7 +17,9 @@ module.exports = function(sequelize, DataTypes) {
     size: DataTypes.STRING,
     initialGrowthTime: DataTypes.INTEGER,
     reproductionTime: DataTypes.INTEGER,
-    processingTime: DataTypes.INTEGER
+    processingTime: DataTypes.INTEGER,
+    color: DataTypes.STRING,
+    qiColorQuest: DataTypes.BOOLEAN
   });
   Item.associate = function(models) {
     Item.belongsToMany(models.Villager, { through: models.Gift })

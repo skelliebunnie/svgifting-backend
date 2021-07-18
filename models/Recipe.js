@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
   Recipe.associate = function(models) {
     Recipe.belongsToMany(models.Item, { through: models.Ingredient });
 
-    Recipe.belongsTo(models.Item, { allowNull: true });
+    // Recipe.belongsTo(models.Item, { allowNull: true });
   }
   return Recipe;
 }
