@@ -7,12 +7,17 @@ module.exports = function(sequelize, DataTypes) {
     },
     standardHours: DataTypes.STRING,
     closed: DataTypes.STRING,
-    image: DataTypes.TEXT
+    image: DataTypes.TEXT,
+    residence: DataTypes.BOOLEAN,
+    availableIn: {
+      type: DataTypes.STRING,
+      defaultValue: 'standard'
+    }
   });
 
   Location.associate = function(models) {
     // Locations may have many villagers as residents
-    Location.hasMany(models.Villager, { as: "residents" });
+    Location.hasMany(models.Npc, { as: "residents" });
 
     Location.belongsTo(models.SubRegion)
   }

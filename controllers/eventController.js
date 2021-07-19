@@ -12,7 +12,7 @@ router.post('/api/event', function(req, res) {
 
 router.get('/api/events', function(req, res) {
   db.Event.findAll({
-    include: [db.Villager['name'], db.Season['name']],
+    include: [db.Npc['name'], db.Season['name']],
     order: ['seasonId', 'day']
   })
     .then(results => res.json(results))
@@ -24,10 +24,10 @@ router.get('/api/events/:season', function(req, res) {
     where: {
       SeasonId: req.params.season
     },
-    attributes: ["SeasonId", "SubRegionId", "VillagerId", "day", "endTime", "startTime", "name", "type", "id"],
+    attributes: ["SeasonId", "SubRegionId", "NpcId", "day", "endTime", "startTime", "name", "type", "id"],
     include: [
       {
-        model: db.Villager,
+        model: db.Npc,
         attributes: ['name']
       }, 
       {

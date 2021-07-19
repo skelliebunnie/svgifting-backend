@@ -15,6 +15,16 @@ router.get('/api/locations', function(req, res) {
 
 })
 
+router.get('/api/residences', function (req, res) {
+  db.Location.findAll({
+    where: {
+      residence: true
+    }
+  }).then(types => res.json(types))
+    .catch(err => res.status(500).json(err))
+
+})
+
 router.put('/api/write', function(req, res) {
   
 })

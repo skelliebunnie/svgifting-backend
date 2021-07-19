@@ -3,6 +3,10 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    availableIn: {
+      type: DataTypes.STRING,
+      defaultValue: 'standard'
     }
   });
   SubRegion.associate = function(models) {

@@ -29,7 +29,7 @@ router.get('/api/item/:name', function(req, res) {
 })
 
 // post for new, put for update
-// can I use post for upsert?
+// can I use post for upsert? YES!
 router.post('/api/item/upsert', function(req, res) {
   db.Item.upsert(
     req.body,

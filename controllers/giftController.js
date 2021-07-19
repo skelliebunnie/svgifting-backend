@@ -57,8 +57,8 @@ router.get("/api/gifts/:preference", function (req, res) {
     attributes: ['id','name'],
     include: [
       {
-        model: db.Villager,
-        attributes: ['name'],
+        model: db.Npc,
+        attributes: ['name', 'birthdayDate', 'birthdaySeasonId', 'marriageable', 'availableIn'],
         through: {
           model: db.Gift,
           attributes: [],
@@ -70,11 +70,11 @@ router.get("/api/gifts/:preference", function (req, res) {
     ],
     order: [
       ['name', 'ASC'],
-      [db.Villager, 'name', 'ASC']
+      [db.Npc, 'name', 'ASC']
     ]
   }).then((gifts) => {
-    const list = gifts.filter((gift) => gift.Villagers.length > 0)
-      // .sort((a, b) => (a.Villagers.length > b.Villagers.length ? -1 : 1))
+    const list = gifts.filter((gift) => gift.Npcs.length > 0)
+      // .sort((a, b) => (a.Npcs.length > b.Npcs.length ? -1 : 1))
 
     res.json(list)
   }).catch(error => {
@@ -96,8 +96,8 @@ router.get("/api/gift/:name", function (req, res) {
         attributes: ['preference']
       },
       {
-        model: db.Villager,
-        attributes: ['name'],
+        model: db.Npc,
+        attributes: ['name', 'birthdayDate', 'birthdaySeasonId', 'marriageable', 'availableIn'],
         through: db.Gift
       },
     ]

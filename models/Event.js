@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   Event.associate = function(models) {
-    Event.belongsTo(models.Villager, { allowNull: true });
+    Event.belongsTo(models.Npc, { allowNull: true });
     Event.belongsTo(models.Season);
     Event.belongsTo(models.SubRegion, { allowNull: true });
   }

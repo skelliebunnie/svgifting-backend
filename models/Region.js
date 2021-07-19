@@ -7,7 +7,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     standardHours: DataTypes.STRING,
     closed: DataTypes.STRING,
-    image: DataTypes.TEXT
+    image: DataTypes.TEXT,
+    availableIn: {
+      type: DataTypes.STRING,
+      defaultValue: 'standard'
+    }
   });
 
   Region.associate = function(models) {

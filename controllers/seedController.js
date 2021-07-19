@@ -335,17 +335,18 @@ router.post("/api/seed/locations", function (req, res) {
   });
 });
 
-// seed villagers
-router.post("/api/seed/villagers", function (req, res) {
-  db.Villager.bulkCreate([
+// seed NPCs
+router.post("/api/seed/npcs", function (req, res) {
+  db.Npc.bulkCreate([
     { // 1
       name: "Alex",
       birthdaySeasonId: 2,
       birthdayDate: 13,
       checkupSeasonId: 2,
       checkupDate: 16,
-      available: true,
-      LocationId: 2
+      marriageable: true,
+      LocationId: 2,
+      availableIn: 'standard'
     },
     { // 2
       name: "Evelyn",
@@ -353,8 +354,9 @@ router.post("/api/seed/villagers", function (req, res) {
       birthdayDate: 20,
       checkupSeasonId: 1,
       checkupDate: 2,
-      available: false,
-      LocationId: 2
+      marriageable: false,
+      LocationId: 2,
+      availableIn: 'standard'
     },
     { // 3
       name: "George",
@@ -362,287 +364,319 @@ router.post("/api/seed/villagers", function (req, res) {
       birthdayDate: 24,
       checkupSeasonId: 1,
       checkupDate: 23,
-      available: false,
-      LocationId: 2
+      marriageable: false,
+      LocationId: 2,
+      availableIn: 'standard'
     },
     { // 4
       name: "Elliott",
       birthdaySeasonId: 3,
       birthdayDate: 5,
       LocationId: 24,
-      available: true,
+      marriageable: true,
       checkupSeasonId: 2,
-      checkupDate: 9
+      checkupDate: 9,
+      availableIn: 'standard'
     },
     { // 5
       name: "Harvey",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 4,
       birthdayDate: 14,
       LocationId: 15,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     },
     { // 6
       name: "Sam",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 2,
       birthdayDate: 17,
       LocationId: 1,
       checkupSeasonId: 3,
-      checkupDate: 11
+      checkupDate: 11,
+      availableIn: 'standard'
     },
     { // 7
       name: "Sebastian",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 4,
       birthdayDate: 10,
       LocationId: 5,
       checkupSeasonId: 1,
-      checkupDate: 4
+      checkupDate: 4,
+      availableIn: 'standard'
     },
     { // 8
       name: "Shane",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 1,
       birthdayDate: 20,
       LocationId: 28,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     },
     { // 9
       name: "Abigail",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 3,
       birthdayDate: 13,
       LocationId: 19,
       checkupSeasonId: 1,
-      checkupDate: 4
+      checkupDate: 4,
+      availableIn: 'standard'
     },
     { // 10
       name: "Emily",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 1,
       birthdayDate: 27,
       LocationId: 4,
       checkupSeasonId: 4,
-      checkupDate: 11
+      checkupDate: 11,
+      availableIn: 'standard'
     },
     { // 11
       name: "Haley",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 1,
       birthdayDate: 14,
       LocationId: 27,
       checkupSeasonId: 4,
-      checkupDate: 9
+      checkupDate: 9,
+      availableIn: 'standard'
     },
     { // 12
       name: "Leah",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 4,
       birthdayDate: 23,
       LocationId: 27,
       checkupSeasonId: 1,
-      checkupDate: 16
+      checkupDate: 16,
+      availableIn: 'standard'
     },
     { // 13
       name: "Maru",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 2,
       birthdayDate: 10,
       LocationId: 5,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     },
     { // 14
       name: "Penny",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 3,
       birthdayDate: 2,
       LocationId: 7,
       checkupSeasonId: 4,
-      checkupDate: 4
+      checkupDate: 4,
+      availableIn: 'standard'
     },
     { // 15
       name: "Pam",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 1,
       birthdayDate: 18,
       LocationId: 7,
       checkupSeasonId: 1,
-      checkupDate: 25
+      checkupDate: 25,
+      availableIn: 'standard'
     },
     { // 16
       name: "Gus",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 2,
       birthdayDate: 8,
       LocationId: 21,
       checkupSeasonId: 3,
-      checkupDate: 4
+      checkupDate: 4,
+      availableIn: 'standard'
     },
     { // 17
       name: "Caroline",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 4,
       birthdayDate: 7,
       LocationId: 19,
       checkupSeasonId: 3,
-      checkupDate: 25
+      checkupDate: 25,
+      availableIn: 'standard'
     },
     { // 18
       name: "Pierre",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 1,
       birthdayDate: 26,
       LocationId: 19,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     },
     { // 19
       name: "Jodi",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 3,
       birthdayDate: 11,
       LocationId: 1,
       checkupSeasonId: 1,
-      checkupDate: 18
+      checkupDate: 18,
+      availableIn: 'standard'
     },
     { // 20
       name: "Kent",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 1,
       birthdayDate: 4,
       LocationId: 1,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     },
     { // 21
       name: "Jas",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 1,
       birthdayDate: 4,
       LocationId: 28,
       checkupSeasonId: 4,
-      checkupDate: 18
+      checkupDate: 18,
+      availableIn: 'standard'
     },
     { // 22
       name: "Vincent",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 1,
       birthdayDate: 10,
       LocationId: 1,
       checkupSeasonId: 1,
-      checkupDate: 11
+      checkupDate: 11,
+      availableIn: 'standard'
     },
     { // 23
       name: "Lewis",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 1,
       birthdayDate: 7,
       LocationId: 6,
       checkupSeasonId: 4,
-      checkupDate: 16
+      checkupDate: 16,
+      availableIn: 'standard'
     },
     { // 24
       name: "Linus",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 4,
       birthdayDate: 3,
       LocationId: 8,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     },
     { // 25
       name: "Marnie",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 3,
       birthdayDate: 18,
       LocationId: 28,
       checkupSeasonId: 3,
-      checkupDate: 18
+      checkupDate: 18,
+      availableIn: 'standard'
     },
     { // 26
       name: "Robin",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 3,
       birthdayDate: 21,
       LocationId: 5,
       checkupSeasonId: 2,
-      checkupDate: 18
+      checkupDate: 18,
+      availableIn: 'standard'
     },
     { // 27
       name: "Demetrius",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 2,
       birthdayDate: 19,
       LocationId: 5,
       checkupSeasonId: 2,
-      checkupDate: 25
+      checkupDate: 25,
+      availableIn: 'standard'
     },
     { // 28
       name: "Willy",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 2,
       birthdayDate: 24,
       LocationId: 35,
       checkupSeasonId: 1,
-      checkupDate: 9
+      checkupDate: 9,
+      availableIn: 'standard'
     },
     { // 29
       name: "Krobus",
-      available: true,
+      marriageable: true,
       birthdaySeasonId: 4,
       birthdayDate: 1,
       LocationId: 36,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     },
     { // 30
       name: "Dwarf",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 2,
       birthdayDate: 22,
       LocationId: 37,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     },
     { // 31
       name: "Wizard",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 4,
       birthdayDate: 17,
       LocationId: 29,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     },
     { // 32
       name: "Sandy",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 3,
       birthdayDate: 15,
       LocationId: 18,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     },
     { // 33
       name: "Clint",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 4,
       birthdayDate: 26,
       LocationId: 10,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     },
     { // 34
       name: "Leo",
-      available: false,
+      marriageable: false,
       birthdaySeasonId: 2,
       birthdayDate: 26,
       LocationId: 41,
       checkupSeasonId: 1,
-      checkupDate: 0
+      checkupDate: 0,
+      availableIn: 'standard'
     }
   ]).then(seeded => {
     res.json(seeded)
@@ -1865,357 +1899,357 @@ router.post("/api/seed/items/other", function(req, res) {
 router.post("/api/seed/gifts", function(req, res) {
   db.Gift.bulkCreate([
     {
-      VillagerId: 1,
+      NpcId: 1,
       ItemId: 1,
       preference: 'love'
     },
     {
-      VillagerId: 1,
+      NpcId: 1,
       ItemId: 2,
       preference: 'love'
     },
     {
-      VillagerId: 4,
+      NpcId: 4,
       ItemId: 11,
       preference: 'love'
     },
     {
-      VillagerId: 4,
+      NpcId: 4,
       ItemId: 12,
       preference: 'love'
     },
     {
-      VillagerId: 4,
+      NpcId: 4,
       ItemId: 13,
       preference: 'love'
     },
     {
-      VillagerId: 4,
+      NpcId: 4,
       ItemId: 14,
       preference: 'love'
     },
     {
-      VillagerId: 4,
+      NpcId: 4,
       ItemId: 15,
       preference: 'love'
     },
     {
-      VillagerId: 4,
+      NpcId: 4,
       ItemId: 16,
       preference: 'love'
     },
     {
-      VillagerId: 5,
+      NpcId: 5,
       ItemId: 17,
       preference: 'love'
     },
     {
-      VillagerId: 5,
+      NpcId: 5,
       ItemId: 18,
       preference: 'love'
     },
     {
-      VillagerId: 5,
+      NpcId: 5,
       ItemId: 19,
       preference: 'love'
     },
     {
-      VillagerId: 5,
+      NpcId: 5,
       ItemId: 20,
       preference: 'love'
     },
     {
-      VillagerId: 5,
+      NpcId: 5,
       ItemId: 21,
       preference: 'love'
     },
     {
-      VillagerId: 6,
+      NpcId: 6,
       ItemId: 22,
       preference: 'love'
     },
     {
-      VillagerId: 6,
+      NpcId: 6,
       ItemId: 23,
       preference: 'love'
     },
     {
-      VillagerId: 6,
+      NpcId: 6,
       ItemId: 24,
       preference: 'love'
     },
     {
-      VillagerId: 6,
+      NpcId: 6,
       ItemId: 25,
       preference: 'love'
     },
     {
-      VillagerId: 7,
+      NpcId: 7,
       ItemId: 26,
       preference: 'love'
     },
     {
-      VillagerId: 7,
+      NpcId: 7,
       ItemId: 27,
       preference: 'love'
     },
     {
-      VillagerId: 7,
+      NpcId: 7,
       ItemId: 28,
       preference: 'love'
     },
     {
-      VillagerId: 7,
+      NpcId: 7,
       ItemId: 29,
       preference: 'love'
     },
     {
-      VillagerId: 7,
+      NpcId: 7,
       ItemId: 30,
       preference: 'love'
     },
     {
-      VillagerId: 8,
+      NpcId: 8,
       ItemId: 31,
       preference: 'love'
     },
     {
-      VillagerId: 8,
+      NpcId: 8,
       ItemId: 32,
       preference: 'love'
     },
     {
-      VillagerId: 8,
+      NpcId: 8,
       ItemId: 33,
       preference: 'love'
     },
     {
-      VillagerId: 9,
+      NpcId: 9,
       ItemId: 34,
       preference: 'love'
     },
     {
-      VillagerId: 9,
+      NpcId: 9,
       ItemId: 35,
       preference: 'love'
     },
     {
-      VillagerId: 9,
+      NpcId: 9,
       ItemId: 36,
       preference: 'love'
     },
     {
-      VillagerId: 9,
+      NpcId: 9,
       ItemId: 37,
       preference: 'love'
     },
     {
-      VillagerId: 9,
+      NpcId: 9,
       ItemId: 38,
       preference: 'love'
     },
     {
-      VillagerId: 9,
+      NpcId: 9,
       ItemId: 39,
       preference: 'love'
     },
     {
-      VillagerId: 9,
+      NpcId: 9,
       ItemId: 40,
       preference: 'love'
     },
     {
-      VillagerId: 10,
+      NpcId: 10,
       ItemId: 34,
       preference: 'love'
     },
     {
-      VillagerId: 10,
+      NpcId: 10,
       ItemId: 41,
       preference: 'love'
     },
     {
-      VillagerId: 10,
+      NpcId: 10,
       ItemId: 42,
       preference: 'love'
     },
     {
-      VillagerId: 10,
+      NpcId: 10,
       ItemId: 43,
       preference: 'love'
     },
     {
-      VillagerId: 10,
+      NpcId: 10,
       ItemId: 44,
       preference: 'love'
     },
     {
-      VillagerId: 10,
+      NpcId: 10,
       ItemId: 45,
       preference: 'love'
     },
     {
-      VillagerId: 10,
+      NpcId: 10,
       ItemId: 46,
       preference: 'love'
     },
     {
-      VillagerId: 10,
+      NpcId: 10,
       ItemId: 47,
       preference: 'love'
     },
     {
-      VillagerId: 10,
+      NpcId: 10,
       ItemId: 48,
       preference: 'love'
     },
     {
-      VillagerId: 11,
+      NpcId: 11,
       ItemId: 49,
       preference: 'love'
     },
     {
-      VillagerId: 11,
+      NpcId: 11,
       ItemId: 50,
       preference: 'love'
     },
     {
-      VillagerId: 11,
+      NpcId: 11,
       ItemId: 51,
       preference: 'love'
     },
     {
-      VillagerId: 11,
+      NpcId: 11,
       ItemId: 52,
       preference: 'love'
     },
     {
-      VillagerId: 12,
+      NpcId: 12,
       ItemId: 53,
       preference: 'love'
     },
     {
-      VillagerId: 12,
+      NpcId: 12,
       ItemId: 54,
       preference: 'love'
     },
     {
-      VillagerId: 12,
+      NpcId: 12,
       ItemId: 55,
       preference: 'love'
     },
     {
-      VillagerId: 12,
+      NpcId: 12,
       ItemId: 56,
       preference: 'love'
     },
     {
-      VillagerId: 12,
+      NpcId: 12,
       ItemId: 57,
       preference: 'love'
     },
     {
-      VillagerId: 12,
+      NpcId: 12,
       ItemId: 58,
       preference: 'love'
     },
     {
-      VillagerId: 12,
+      NpcId: 12,
       ItemId: 21,
       preference: 'love'
     },
     {
-      VillagerId: 13,
+      NpcId: 13,
       ItemId: 7,
       preference: 'love'
     },
     {
-      VillagerId: 13,
+      NpcId: 13,
       ItemId: 59,
       preference: 'love'
     },
     {
-      VillagerId: 13,
+      NpcId: 13,
       ItemId: 60,
       preference: 'love'
     },
     {
-      VillagerId: 13,
+      NpcId: 13,
       ItemId: 61,
       preference: 'love'
     },
     {
-      VillagerId: 13,
+      NpcId: 13,
       ItemId: 62,
       preference: 'love'
     },
     {
-      VillagerId: 13,
+      NpcId: 13,
       ItemId: 63,
       preference: 'love'
     },
     {
-      VillagerId: 13,
+      NpcId: 13,
       ItemId: 65,
       preference: 'love'
     },
     {
-      VillagerId: 13,
+      NpcId: 13,
       ItemId: 66,
       preference: 'love'
     },
     {
-      VillagerId: 13,
+      NpcId: 13,
       ItemId: 67,
       preference: 'love'
     },
     {
-      VillagerId: 13,
+      NpcId: 13,
       ItemId: 33,
       preference: 'love'
     },
     {
-      VillagerId: 14,
+      NpcId: 14,
       ItemId: 7,
       preference: 'love'
     },
     {
-      VillagerId: 14,
+      NpcId: 14,
       ItemId: 43,
       preference: 'love'
     },
     {
-      VillagerId: 14,
+      NpcId: 14,
       ItemId: 68,
       preference: 'love'
     },
     {
-      VillagerId: 14,
+      NpcId: 14,
       ItemId: 69,
       preference: 'love'
     },
     {
-      VillagerId: 14,
+      NpcId: 14,
       ItemId: 54,
       preference: 'love'
     },
     {
-      VillagerId: 14,
+      NpcId: 14,
       ItemId: 70,
       preference: 'love'
     },
     {
-      VillagerId: 14,
+      NpcId: 14,
       ItemId: 71,
       preference: 'love'
     },
     {
-      VillagerId: 14,
+      NpcId: 14,
       ItemId: 72,
       preference: 'love'
     },
     {
-      VillagerId: 14,
+      NpcId: 14,
       ItemId: 12,
       preference: 'love'
     }

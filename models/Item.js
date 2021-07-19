@@ -19,10 +19,14 @@ module.exports = function(sequelize, DataTypes) {
     reproductionTime: DataTypes.INTEGER,
     processingTime: DataTypes.INTEGER,
     color: DataTypes.STRING,
-    qiColorQuest: DataTypes.BOOLEAN
+    qiColorQuest: DataTypes.BOOLEAN,
+    availableIn: {
+      type: DataTypes.STRING,
+      defaultValue: 'standard'
+    }
   });
   Item.associate = function(models) {
-    Item.belongsToMany(models.Villager, { through: models.Gift })
+    Item.belongsToMany(models.Npc, { through: models.Gift })
 
     Item.belongsToMany(models.Recipe, { through: models.Ingredient })
     

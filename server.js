@@ -21,9 +21,9 @@ app.use('/assets', express.static(__dirname + '/assets'));
 const seedRoutes = require("./controllers/seedController.js");
 app.use(seedRoutes);
 
-// villager routes
-const villagerRoutes = require("./controllers/villagerController.js");
-app.use(villagerRoutes);
+// npc routes
+const npcRoutes = require("./controllers/npcController.js");
+app.use(npcRoutes);
 
 // gift routes
 const giftRoutes = require("./controllers/giftController.js");
