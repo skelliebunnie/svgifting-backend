@@ -5,9 +5,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     source: DataTypes.STRING,
+    availableIn: {
+      type: DataTypes.STRING,
+      defaultValue: 'Vanilla'
+    }
   });
-  Equipment.associate = function(models) {
-    Equipment.hasMany(models.Item);
-  }
+
   return Equipment;
 }

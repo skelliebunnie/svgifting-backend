@@ -3,6 +3,10 @@ module.exports = function(sequelize, DataTypes) {
     preference: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    availableIn: {
+    	type: DataTypes.STRING,
+    	defaultValue: 'Vanilla'
     }
   });
 

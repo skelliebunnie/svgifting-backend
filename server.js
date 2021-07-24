@@ -33,9 +33,9 @@ app.use(giftRoutes);
 const itemRoutes = require("./controllers/itemController.js");
 app.use(itemRoutes);
 
-// item types routes
-const itemTypesRoutes = require("./controllers/itemTypeController.js");
-app.use(itemTypesRoutes);
+// (item) category routes
+const categoryRoutes = require("./controllers/categoryController.js");
+app.use(categoryRoutes);
 
 // equipment routes
 const equipmentRoutes = require("./controllers/equipmentController.js");

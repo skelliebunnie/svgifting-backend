@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   const Event = sequelize.define("Event", {
+  	id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -9,28 +14,46 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: 0
     },
-    // Festival (most common, default)
+    // Birthday (most common, default), Festival, Checkup
     // Other (e.g. 'extra forageables')
     type: {
       type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: 'Festival'
+      defaultValue: 'Birthday'
     },
     startTime: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: '9:00'
+      defaultValue: '2:00'
     },
     endTime: {
       type: DataTypes.TIME,
       allowNull: true,
-      defaultValue: '22:00'
+      defaultValue: '23:59'
+    },
+    availableIn: {
+      type: DataTypes.STRING,
+      defaultValue: 'Vanilla'
     }
   });
   Event.associate = function(models) {
-    Event.belongsTo(models.Npc, { allowNull: true });
-    Event.belongsTo(models.Season);
-    Event.belongsTo(models.SubRegion, { allowNull: true });
+  	Event.belongsTo(models.Npc, {
+  		foreignKey: 'NpcId',
+  		constraints: false,
+  		allowNull: true
+  	});
+
+  	Event.belongsTo(models.Season, {
+  		foreignKey: 'SeasonId',
+  		constraints: false,
+  		allowNull: true
+  	});
+
+    Event.belongsTo(models.SubRegion, {
+    	foreignKey: 'SubRegionId',
+    	constraints: false,
+    	allowNull: true
+    });
   }
   return Event;
 }

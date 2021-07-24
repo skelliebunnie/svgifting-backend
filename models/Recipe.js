@@ -5,7 +5,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     source: DataTypes.STRING,
-    processingTime: DataTypes.INTEGER
+    processingTime: DataTypes.INTEGER,
+    availableIn: {
+      type: DataTypes.STRING,
+      defaultValue: 'Vanilla'
+    }
   });
 
   Recipe.associate = function(models) {

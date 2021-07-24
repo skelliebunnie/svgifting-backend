@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     image: DataTypes.TEXT,
     availableIn: {
       type: DataTypes.STRING,
-      defaultValue: 'standard'
+      defaultValue: 'Vanilla'
     }
   });
 

@@ -5,8 +5,14 @@ module.exports = function(sequelize, DataTypes) {
       unique: true,
       allowNull: false
     },
-    standardHours: DataTypes.STRING,
-    closed: DataTypes.STRING,
+    standardHours: {
+    	type: DataTypes.STRING,
+    	allowNull: true
+    },
+    closed: {
+    	type: DataTypes.STRING,
+    	allowNull: true
+    },
     image: DataTypes.TEXT,
     residence: DataTypes.BOOLEAN,
     availableIn: {

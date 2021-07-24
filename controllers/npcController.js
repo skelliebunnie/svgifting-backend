@@ -18,7 +18,7 @@ router.post("/api/npc", function (req, res) {
 //GET all npcs
 router.get("/api/npcs", function (req, res) {
   db.Npc.findAll({
-    attributes: ['name', 'birthdayDate', 'checkupDate', 'marriageable', 'id', 'availableIn'],
+    attributes: ['name', 'marriageable', 'id', 'availableIn'],
     order: [['name'], [db.Item, 'name']],
     include: [
       {
@@ -68,16 +68,44 @@ router.get("/api/npcs", function (req, res) {
 //GET one npc (by name)
 router.get("/api/npcs/:npcName", function (req, res) {
   db.Npc.findOne({
-    attributes: ['name', 'birthdayDate', 'checkupDate', 'marriageable', 'id', 'availableIn'],
+    attributes: ['name', 'marriageable', 'id', 'availableIn'],
     where: {
       name: req.params.npcName
     },
     include: [
+    	{
+    		model: db.Event,
+    		as: 'birthday',
+    		attributes: ["id", "name", "day", "type", "availableIn"],
+    		where: {
+    			type: "birthday"
+    		},
+    		include: [
+    			{
+    				model: db.Season,
+    				attributes: ["name"]
+    			}
+    		]
+    	},
+    	{
+    		model: db.Event,
+    		as: 'checkup',
+    		attributes: ["id", "name", "day", "type", "availableIn"],
+    		where: {
+    			type: "checkup"
+    		},
+    		include: [
+    			{
+    				model: db.Season,
+    				attributes: ["name"]
+    			}
+    		]
+    	},
       {
         model: db.Npc,
-        attributes: ['name', 'birthdayDate', 'checkupDate', 'marriageable', 'id', 'availableIn'],
+        attributes: ['name', 'marriageable', 'id', 'availableIn'],
         as: 'family',
-        duplicating: true
+        duplicating: true,
       },
       {
         model: db.Item,
@@ -86,16 +114,6 @@ router.get("/api/npcs/:npcName", function (req, res) {
           model: db.Gift,
           attributes: ['preference'],
         }
-      },
-      {
-        model: db.Season,
-        attributes: ['name'],
-        as: 'birthdaySeason'
-      },
-      {
-        model: db.Season,
-        attributes: ['name'],
-        as: 'checkupSeason'
       },
       {
         model: db.Location,

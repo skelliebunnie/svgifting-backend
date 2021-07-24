@@ -9,13 +9,15 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       defaultValue: false
     },
-    
+    availableIn: {
+      type: DataTypes.STRING,
+      defaultValue: 'Vanilla'
+    }
   });
 
   Bundle.associate = function (models) {
     Bundle.belongsToMany(models.Item, { through: models.BundleItem });
     Bundle.belongsToMany(models.Item, { through: models.BundleReward });
-    // Recipe.belongsTo(models.Item, { allowNull: true });
   }
   return Bundle;
 }

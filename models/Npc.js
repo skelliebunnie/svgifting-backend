@@ -7,10 +7,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     // ID of Season
     // birthdaySeason: DataTypes.INTEGER,
-    birthdayDate: DataTypes.INTEGER,
+    // birthdayDate: DataTypes.INTEGER,
     // ID of Season
     // checkupSeason: DataTypes.INTEGER,
-    checkupDate: DataTypes.INTEGER,
+    // checkupDate: DataTypes.INTEGER,
     marriageable: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -19,18 +19,17 @@ module.exports = function(sequelize, DataTypes) {
     availableIn: {
       type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: 'standard'
+      defaultValue: 'Vanilla'
     }
   });
 
   Npc.associate = function(models) {
+    Npc.belongsTo(models.Location);
+
     // gifts table is separate from the item tables
     Npc.belongsToMany(models.Item, { through: models.Gift });
     Npc.belongsToMany(models.Season, { through: models.Event });
 
-    Npc.hasMany(models.Item, { as: 'Gift' })
-
-    Npc.belongsTo(models.Location);
 
     // family members
     Npc.belongsToMany(models.Npc, {

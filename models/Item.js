@@ -22,16 +22,13 @@ module.exports = function(sequelize, DataTypes) {
     qiColorQuest: DataTypes.BOOLEAN,
     availableIn: {
       type: DataTypes.STRING,
-      defaultValue: 'standard'
+      defaultValue: 'Vanilla'
     }
   });
   Item.associate = function(models) {
     Item.belongsToMany(models.Npc, { through: models.Gift })
 
     Item.belongsToMany(models.Recipe, { through: models.Ingredient })
-    
-    Item.belongsTo(models.Equipment, { allowNull: true })
-    Item.belongsTo(models.Animal, { allowNull: true })
 
     Item.belongsToMany(models.Season, { through: models.ItemAvailability }, { allowNull: true })
   }

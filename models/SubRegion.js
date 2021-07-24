@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     availableIn: {
       type: DataTypes.STRING,
-      defaultValue: 'standard'
+      defaultValue: 'Vanilla'
     }
   });
   SubRegion.associate = function(models) {

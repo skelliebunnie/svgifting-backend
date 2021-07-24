@@ -20,8 +20,8 @@ router.get("/api/gifts", function (req, res) {
     attributes: ['id', 'name'],
     include: [
       {
-        model: db.Villager,
-        attributes: ['name'],
+        model: db.Npc,
+        attributes: ['id', 'name'],
         through: {
           model: db.Gift,
           attributes: []
@@ -38,11 +38,11 @@ router.get("/api/gifts", function (req, res) {
     ],
     order: [
       ['name', 'ASC'],
-      [db.Villager, 'name', 'ASC']
+      [db.Npc, 'name', 'ASC']
     ]
   }).then((gifts) => {
-    const list = gifts.filter(gift => gift.Villagers.length > 0)
-      // .sort((a, b) => a.Villagers.length > b.Villagers.length ? -1 : 1)
+    const list = gifts.filter(gift => gift.Npcs.length > 0)
+      // .sort((a, b) => a.Npcs.length > b.Npcs.length ? -1 : 1)
 
     res.json(list);
   }).catch(error => {
@@ -51,21 +51,34 @@ router.get("/api/gifts", function (req, res) {
   })
 })
 
-// GET all gifts, with associated villagers, by preference
+// GET all gifts, with associated npcs, by preference
 router.get("/api/gifts/:preference", function (req, res) {
   db.Item.findAll({
     attributes: ['id','name'],
     include: [
       {
         model: db.Npc,
-        attributes: ['name', 'birthdayDate', 'birthdaySeasonId', 'marriageable', 'availableIn'],
+        attributes: ['id', 'name', 'marriageable', 'availableIn'],
         through: {
           model: db.Gift,
           attributes: [],
           where: {
             preference: req.params.preference
           }
-        }
+        },
+        include: [
+        	{
+		        model: db.Season,
+		        attributes: ['id', 'name'],
+		        through: {
+		          model: db.Event,
+		          attributes: ['id', 'day', 'type', 'name'],
+		          where: {
+		            type: 'birthday'
+		          }
+		        }
+		      }
+        ]
       }
     ],
     order: [
@@ -97,7 +110,7 @@ router.get("/api/gift/:name", function (req, res) {
       },
       {
         model: db.Npc,
-        attributes: ['name', 'birthdayDate', 'birthdaySeasonId', 'marriageable', 'availableIn'],
+        attributes: ['id', 'name', 'birthdayDate', 'birthdaySeasonId', 'marriageable', 'availableIn'],
         through: db.Gift
       },
     ]
