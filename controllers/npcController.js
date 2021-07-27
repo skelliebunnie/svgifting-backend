@@ -195,6 +195,63 @@ router.get("/api/npcs/:npcId", function (req, res) {
   })
 })
 
+router.get("/api/npc/:npcId/gifts", function(req, res) {
+	db.Item.findAll({
+    attributes: ['id', 'name'],
+    include: [
+      {
+        model: db.Npc,
+        attributes: [],
+        where: {
+        	id: req.params.npcId
+        },
+        through: {
+          model: db.Gift,
+          attributes: []
+        }
+      },
+    ],
+    order: [
+      ['name', 'ASC']
+    ]
+  }).then(gifts => {
+  	res.send(gifts)
+  }).catch(error => {
+  	res.status(500).send(error.message);
+  })
+
+});
+
+router.get("/api/npc/:npcId/gifts/:preference", function(req, res) {
+	db.Item.findAll({
+    attributes: ['id', 'name'],
+    include: [
+      {
+        model: db.Npc,
+        attributes: [],
+        where: {
+        	id: req.params.npcId
+        },
+        through: {
+          model: db.Gift,
+          attributes: [],
+          where: {
+          	preference: req.params.preference
+          }
+        }
+      },
+    ],
+    order: [
+      ['name', 'ASC']
+    ]
+  }).then(gifts => {
+  	res.send(gifts)
+  }).catch(error => {
+  	res.status(500).send(error.message);
+  })
+
+});
+
 router.post('/api/npc/upsert', function (req, res) {
   db.Npc.upsert(
     req.body,
