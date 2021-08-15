@@ -17,6 +17,10 @@ require('dotenv').config()
 
 app.use('/assets', express.static(__dirname + '/assets'));
 
+// root route
+const rootRoute = require("./controllers/rootController.js");
+app.use(rootRoute);
+
 // seed routes
 const seedRoutes = require("./controllers/seedController.js");
 app.use(seedRoutes);
