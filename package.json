@@ -2,11 +2,12 @@
   "name": "svgifting-backend",
   "version": "1.0.0",
   "description": "Backend for the 'Stardew Valley Gifting & Friendship Helper' app",
-  "main": "server.js",
+  "main": "index.js",
+  "repository": "https://github.com/skelliebunnie/svgifting-backend",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
-    "build": "node server.js"
+    "start": "nodemon index.js",
+    "build": "node index.js"
   },
   "keywords": [
     "Stardew Valley",
