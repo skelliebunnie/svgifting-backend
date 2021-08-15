@@ -37,6 +37,11 @@ app.use(itemRoutes);
 const categoryRoutes = require("./controllers/categoryController.js");
 app.use(categoryRoutes);
 
+// item availability routes
+const itemAvailabilityRoutes = require("./controllers/itemAvailabilityController.js");
+app.use(itemAvailabilityRoutes);
+
+
 // equipment routes
 const equipmentRoutes = require("./controllers/equipmentController.js");
 app.use(equipmentRoutes);

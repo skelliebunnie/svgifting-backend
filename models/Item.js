@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     availableIn: {
       type: DataTypes.STRING,
       defaultValue: 'Vanilla'
-    }
+    },
   });
   Item.associate = function(models) {
     Item.belongsToMany(models.Npc, { through: models.Gift })
@@ -31,6 +31,13 @@ module.exports = function(sequelize, DataTypes) {
     Item.belongsToMany(models.Recipe, { through: models.Ingredient })
 
     Item.belongsToMany(models.Season, { through: models.ItemAvailability }, { allowNull: true })
+
+    Item.belongsToMany(models.Location, { through: models.ItemAvailability }, { allowNull: true })
+
+    Item.belongsTo(models.Category)
+    Item.belongsTo(models.Animal, { allowNull: true })
+    Item.belongsTo(models.Equipment, { allowNull: true })
+
   }
   return Item;
 }

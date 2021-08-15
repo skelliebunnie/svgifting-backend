@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     Animal.belongsTo(models.Building)
     Animal.belongsTo(models.Building, { as: "unlockedWithBuilding" })
 
-    // Animal.hasMany(models.Item)
+    Animal.hasMany(models.Item)
   }
   return Animal;
 }
