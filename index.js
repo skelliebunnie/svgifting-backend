@@ -2,7 +2,6 @@ const express = require("express");
 const compression = require("compression")
 const cors = require("cors");
 const db = require("./models");
-const mysql = require('mysql2')
 
 const app = express();
 
@@ -83,10 +82,9 @@ app.use(eventRoutes);
 // 	return;
 // });
 
-const PORT = process.env.NODE_ENV === 'production' ? process.env.RDS_PORT : 3030;
-const url = process.env.NODE_ENV === 'production' ? process.env.RDS_HOSTNAME : 'localhost';
+const PORT = process.env.PORT || 3030;
 db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function() {
-    console.log(`App running @ http://${url}:${PORT}`);
+    console.log(`App running @ http://localhost:${PORT}`);
   });
 });
