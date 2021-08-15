@@ -2,7 +2,6 @@ const express = require("express");
 const compression = require("compression")
 const cors = require("cors");
 const db = require("./models");
-const PORT = process.env.PORT || 3030;
 
 const app = express();
 
@@ -75,17 +74,17 @@ app.use(eventRoutes);
 // app.use(questRoutes);
 
 /* Error Handler Middleware */
-app.use((err, req, res, next) => {
-	const statusCode = err.statusCode || 500;
-	console.error(err.message, err.stack);
-	res.status(statusCode).json({'message': err.message});
+// app.use((err, req, res, next) => {
+// 	const statusCode = err.statusCode || 500;
+// 	console.error(err.message, err.stack);
+// 	res.status(statusCode).json({'message': err.message});
+// 
+// 	return;
+// });
 
-	return;
-});
-
-
+const PORT = process.env.PORT || 3030;
 db.sequelize.sync({ force: false }).then(function () {
-  app.listen(PORT, '0.0.0.0', () => {
+  app.listen(PORT, function() {
     console.log(`App running @ http://localhost:${PORT}`);
   });
 });
