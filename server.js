@@ -84,7 +84,7 @@ app.use(eventRoutes);
 
 const PORT = process.env.PORT || 3030;
 db.sequelize.sync({ force: false }).then(function () {
-  app.listen(PORT, function() {
+  app.listen(PORT, '0.0.0.0', function() {
     console.log(`App running @ http://localhost:${PORT}`);
   });
 });
