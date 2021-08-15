@@ -8,7 +8,7 @@
     "tables": ["animals", "buffs", "buildings", "dungeonlocations", "equipment", "events", "gifts", "ingredients", "itemavailabilities", "items", "locations", "professions", "recipebuffs", "recipes", "seasons", "skills", "stats", "subregions", "types", "villagerfamily", "villagerfriends", "villagers"]
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
+    "use_env_variable": "DB_URL",
     "dialect": "mysql"
   }
 }
