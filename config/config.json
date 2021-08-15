@@ -8,7 +8,6 @@
     "tables": ["animals", "buffs", "buildings", "dungeonlocations", "equipment", "events", "gifts", "ingredients", "itemavailabilities", "items", "locations", "professions", "recipebuffs", "recipes", "seasons", "skills", "stats", "subregions", "types", "villagerfamily", "villagerfriends", "villagers"]
   },
   "production": {
-    "use_env_variable": "true",
-    "dialect": "mysql"
+    "use_env_variable": "true"
   }
 }
