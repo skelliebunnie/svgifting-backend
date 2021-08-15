@@ -57,7 +57,7 @@ router.get('/api/items', function(req, res) {
     ]
   }).then(items => {
     return res.json(items);
-  }).catch(err => res.status(500).json(err));
+  }).catch(err => res.status(500).send(err.message));
 })
 
 router.get('/api/item/:name', function(req, res) {
@@ -99,7 +99,7 @@ router.get('/api/item/:name', function(req, res) {
     ]
   }).then(item => {
     return res.json(item.data);
-  }).catch(err => res.status(500).json(err));
+  }).catch(err => res.status(500).send(err.message));
 })
 
 // post for new, put for update
