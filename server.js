@@ -2,6 +2,7 @@ const express = require("express");
 const compression = require("compression")
 const cors = require("cors");
 const db = require("./models");
+const PORT = process.env.PORT || 3030;
 
 const app = express();
 
@@ -41,7 +42,6 @@ app.use(categoryRoutes);
 const itemAvailabilityRoutes = require("./controllers/itemAvailabilityController.js");
 app.use(itemAvailabilityRoutes);
 
-
 // equipment routes
 const equipmentRoutes = require("./controllers/equipmentController.js");
 app.use(equipmentRoutes);
@@ -74,9 +74,18 @@ app.use(eventRoutes);
 // const questRoutes = require("./controllers/questController.js");
 // app.use(questRoutes);
 
-const PORT = process.env.PORT || 3030;
+/* Error Handler Middleware */
+app.use((err, req, res, next) => {
+	const statusCode = err.statusCode || 500;
+	console.error(err.message, err.stack);
+	res.status(statusCode).json({'message': err.message});
+
+	return;
+});
+
+
 db.sequelize.sync({ force: false }).then(function () {
-  app.listen(PORT, function () {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`App running @ http://localhost:${PORT}`);
   });
 });
