@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../models");
-
+const db = require('../models');
 const { Op } = require("sequelize");
 const jwt = require('jsonwebtoken');
 const auth = require("./auth.js");
@@ -12,7 +11,7 @@ router.post('/api/item', function(req, res) {
 	let userData = auth.user(req);
 
   if(userData.admin) {
-  	db.Item.create(req.body).then(newItem => {
+  	db.item.create(req.body).then(newItem => {
 	    return res.json(newItem);
 	  }).catch(err => res.status(500).json(err));
   } else {
@@ -21,35 +20,35 @@ router.post('/api/item', function(req, res) {
 })
 
 router.get('/api/items', function(req, res) {
-  db.Item.findAll({
+  db.item.findAll({
     order: ['name'],
     include: [
     	{
-	    	model: db.Category,
+	    	model: db.category,
 	    	attributes: ['id', 'name']
 	    },
 	    {
-	    	model: db.Animal,
+	    	model: db.animal,
 	    	attributes: ['id', 'name']
 	    },
 	    {
-	    	model: db.Equipment,
+	    	model: db.equipment,
 	    	attributes: ['id', 'name']
 	    },
 	    {
-	    	model: db.Season,
-	    	through: db.ItemAvailability,
+	    	model: db.season,
+	    	through: ItemAvailability,
 	    	attributes: ['id', 'name']
 	    },
 	    {
-	    	model: db.Location,
-	    	through: db.ItemAvailability,
+	    	model: db.location,
+	    	through: itemavailability,
 	    	attributes: ['id', 'name'],
 	    	include: {
-	    		model: db.SubRegion,
+	    		model: db.subregion,
 	    		attributes: ['id', 'name'],
 	    		include: {
-	    			model: db.Region,
+	    			model: db.region,
 	    			attributes: ['id', 'name']
 	    		}
 	    	}
@@ -70,31 +69,31 @@ router.get('/api/item/:name', function(req, res) {
     },
     include: [
     	{
-	    	model: db.Category,
+	    	model: db.category,
 	    	attributes: ['id', 'name']
 	    },
 	    {
-	    	model: db.Animal,
+	    	model: db.animal,
 	    	attributes: ['id', 'name']
 	    },
 	    {
-	    	model: db.Equipment,
+	    	model: db.equipment,
 	    	attributes: ['id', 'name']
 	    },
 	    {
-	    	model: db.Season,
-	    	through: db.ItemAvailability,
+	    	model: db.season,
+	    	through: itemavailability,
 	    	attributes: ['id', 'name']
 	    },
 	    {
-	    	model: db.Location,
-	    	through: db.ItemAvailability,
+	    	model: db.location,
+	    	through: itemavailability,
 	    	attributes: ['id', 'name'],
 	    	include: {
-	    		model: db.SubRegion,
+	    		model: db.subregion,
 	    		attributes: ['id', 'name'],
 	    		include: {
-	    			model: db.Region,
+	    			model: db.region,
 	    			attributes: ['id', 'name']
 	    		}
 	    	}
@@ -111,7 +110,7 @@ router.post('/api/item/upsert', function(req, res) {
   let userData = auth.user(req);
 
   if(userData.admin) {
-  	db.Item.upsert(
+  	db.item.upsert(
 	    req.body,
 	    { returning: true }
 	  )
