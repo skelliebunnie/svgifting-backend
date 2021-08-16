@@ -57,7 +57,10 @@ router.get('/api/items', function(req, res) {
     ]
   }).then(items => {
     return res.json(items);
-  }).catch(err => res.status(500).send(err.message));
+  }).catch(err => {
+  	console.error(err);
+  	res.status(500).json(err)
+  });
 })
 
 router.get('/api/item/:name', function(req, res) {
@@ -99,7 +102,7 @@ router.get('/api/item/:name', function(req, res) {
     ]
   }).then(item => {
     return res.json(item.data);
-  }).catch(err => res.status(500).send(err.message));
+  }).catch(err => res.status(500).json(err));
 })
 
 // post for new, put for update
@@ -116,8 +119,8 @@ router.post('/api/item/upsert', function(req, res) {
 	      res.json(result);
 	    })
 	    .catch(err => {
-	      console.error(err.message);
-	      res.status(500).json({message: err.message})
+	      console.error(err);
+	      res.status(500).json(err)
 	    });
   } else {
   	res.status(403).send('you must be an admin to create / update items!')
