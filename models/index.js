@@ -12,8 +12,8 @@ if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env.RDS_DBNAME, process.env.RDS_USERNAME, process.env.RDS_PASSWORD, {
   	host: process.env.RDS_HOSTNAME,
   	port: 3306,
-  	dialect: 'mysql',
-  	dialectModule: require('mysql2')
+  	dialectModule: require('mysql2'),
+  	...config
   });
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
