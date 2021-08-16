@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   Season.associate = function(models) {
     Season.belongsToMany(models.Item, { through: models.ItemAvailability })
-    Season.belongsToMany(models.Npc, { through: models.Event });
+    Season.belongsToMany(models.Npc, { through: models.Event, constraints: false });
   }
   return Season;
 }

@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
 
     // gifts table is separate from the item tables
     Npc.belongsToMany(models.Item, { through: models.Gift });
-    Npc.belongsToMany(models.Season, { through: models.Event });
+    Npc.belongsToMany(models.Season, { through: models.Event, constraints: false });
 
 
     // family members
