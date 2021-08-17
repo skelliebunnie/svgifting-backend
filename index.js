@@ -21,6 +21,10 @@ app.use('/assets', express.static(__dirname + '/assets'));
 const rootRoute = require("./controllers/rootController.js");
 app.use(rootRoute);
 
+// user route
+const userRoutes = require("./controllers/userController.js");
+app.use(userRoutes);
+
 // seed routes
 const seedRoutes = require("./controllers/seedController.js");
 app.use(seedRoutes);

@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 const auth = {
 	user: (req) => {
 		let token = false;
