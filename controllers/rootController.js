@@ -3,22 +3,13 @@ const router = express.Router();
 const db = require("../models");
 
 router.get('/', function(req, res) {
-  if(db.User === undefined) {
-    console.error(db);
-  } else {
-    db.Item.findAll({})
-      .then(items => {
-        const randIdx = Math.random() * ((items.length - 1) - 1) + 1;
-
-        res.json(items[randIdx])
-      })
-      .catch(err => {
-        console.error(err);
-        res.status(500).json(err)
-      })
-  }
-  
-  // return res.json({ message: 'success' })
+  db.Item.findOne({
+    where: {
+      id: 1
+    }
+  })
+    .then(item => res.json(item))
+    .catch(err => res.status(500).json(err))
 })
 
 module.exports = router;
