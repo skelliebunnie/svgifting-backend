@@ -90,6 +90,7 @@ router.get('/api/users', (req, res) => {
 					updatedAt: user.updatedAt 
 				}
 			))
+			console.log(userList);
 
 			res.json(userList);
 		})

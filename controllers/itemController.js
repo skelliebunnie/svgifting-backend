@@ -11,97 +11,189 @@ router.post('/api/item', function(req, res) {
 	let userData = auth.user(req);
 
   if(userData.admin) {
-  	db.Item.create(req.body).then(newItem => {
-	    return res.json(newItem);
-	  }).catch(err => res.status(500).json(err));
+  	if(db.Item === undefined) {
+			db.Item.create(req.body).then(newItem => {
+				return res.json(newItem);
+			}).catch(err => res.status(500).json(err));
+		} else {
+			db.Item.create(req.body).then(newItem => {
+				return res.json(newItem);
+			}).catch(err => res.status(500).json(err));
+		}
   } else {
   	res.status(403).send('you must be an admin to create items!')
   }
 })
 
 router.get('/api/items', function(req, res) {
-  db.Item.findAll({
-    order: ['name'],
-    include: [
-    	{
-	    	model: db.Category,
-	    	attributes: ['id', 'name']
-	    },
-	    {
-	    	model: db.Animal,
-	    	attributes: ['id', 'name']
-	    },
-	    {
-	    	model: db.Equipment,
-	    	attributes: ['id', 'name']
-	    },
-	    {
-	    	model: db.Season,
-	    	through: db.ItemAvailability,
-	    	attributes: ['id', 'name']
-	    },
-	    {
-	    	model: db.Location,
-	    	through: db.ItemAvailability,
-	    	attributes: ['id', 'name'],
-	    	include: {
-	    		model: db.SubRegion,
-	    		attributes: ['id', 'name'],
-	    		include: {
-	    			model: db.Region,
-	    			attributes: ['id', 'name']
-	    		}
-	    	}
-	    }
-    ]
-  }).then(items => {
-    return res.json(items);
-  }).catch(err => {
-  	console.error(err);
-  	res.status(500).json(err)
-  });
+  if(db.Item === undefined) {
+		db.item.findAll({
+			order: ['name'],
+			include: [
+				{
+					model: db.Category,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Animal,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Equipment,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Season,
+					through: db.ItemAvailability,
+					attributes: ['id', 'name']
+				},
+				// {
+				// 	model: db.Location,
+				// 	through: db.ItemAvailability,
+				// 	attributes: ['id', 'name'],
+				// 	include: {
+				// 		model: db.SubRegion,
+				// 		attributes: ['id', 'name'],
+				// 		include: {
+				// 			model: db.Region,
+				// 			attributes: ['id', 'name']
+				// 		}
+				// 	}
+				// }
+			]
+		}).then(items => {
+			return res.json(items);
+		}).catch(err => {
+			console.error(err);
+			res.status(500).json(err)
+		});
+
+	} else {
+		db.Item.findAll({
+			order: ['name'],
+			include: [
+				{
+					model: db.Category,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Animal,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Equipment,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Season,
+					through: db.ItemAvailability,
+					attributes: ['id', 'name']
+				},
+				// {
+				// 	model: db.Location,
+				// 	through: db.ItemAvailability,
+				// 	attributes: ['id', 'name'],
+				// 	include: {
+				// 		model: db.SubRegion,
+				// 		attributes: ['id', 'name'],
+				// 		include: {
+				// 			model: db.Region,
+				// 			attributes: ['id', 'name']
+				// 		}
+				// 	}
+				// }
+			]
+		}).then(items => {
+			return res.json(items);
+		}).catch(err => {
+			console.error(err);
+			res.status(500).json(err)
+		});
+	}
 })
 
 router.get('/api/item/:name', function(req, res) {
-  db.Item.findOne({
-    where: {
-      name: req.params.name
-    },
-    include: [
-    	{
-	    	model: db.Category,
-	    	attributes: ['id', 'name']
-	    },
-	    {
-	    	model: db.Animal,
-	    	attributes: ['id', 'name']
-	    },
-	    {
-	    	model: db.Equipment,
-	    	attributes: ['id', 'name']
-	    },
-	    {
-	    	model: db.Season,
-	    	through: db.ItemAvailability,
-	    	attributes: ['id', 'name']
-	    },
-	    {
-	    	model: db.Location,
-	    	through: db.ItemAvailability,
-	    	attributes: ['id', 'name'],
-	    	include: {
-	    		model: db.SubRegion,
-	    		attributes: ['id', 'name'],
-	    		include: {
-	    			model: db.Region,
-	    			attributes: ['id', 'name']
-	    		}
-	    	}
-	    }
-    ]
-  }).then(item => {
-    return res.json(item.data);
-  }).catch(err => res.status(500).json(err));
+  if(db.Item === undefined) {
+		db.item.findOne({
+			where: {
+				name: req.params.name
+			},
+			include: [
+				{
+					model: db.Category,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Animal,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Equipment,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Season,
+					through: db.ItemAvailability,
+					attributes: ['id', 'name']
+				},
+				// {
+				// 	model: db.Location,
+				// 	through: db.ItemAvailability,
+				// 	attributes: ['id', 'name'],
+				// 	include: {
+				// 		model: db.SubRegion,
+				// 		attributes: ['id', 'name'],
+				// 		include: {
+				// 			model: db.Region,
+				// 			attributes: ['id', 'name']
+				// 		}
+				// 	}
+				// }
+			]
+		}).then(item => {
+			return res.json(item.data);
+		}).catch(err => res.status(500).json(err));
+	} else {
+		db.Item.findOne({
+			where: {
+				name: req.params.name
+			},
+			include: [
+				{
+					model: db.Category,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Animal,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Equipment,
+					attributes: ['id', 'name']
+				},
+				{
+					model: db.Season,
+					through: db.ItemAvailability,
+					attributes: ['id', 'name']
+				},
+				// {
+				// 	model: db.Location,
+				// 	through: db.ItemAvailability,
+				// 	attributes: ['id', 'name'],
+				// 	include: {
+				// 		model: db.SubRegion,
+				// 		attributes: ['id', 'name'],
+				// 		include: {
+				// 			model: db.Region,
+				// 			attributes: ['id', 'name']
+				// 		}
+				// 	}
+				// }
+			]
+		}).then(item => {
+			return res.json(item.data);
+		}).catch(err => res.status(500).json(err));
+	}
 })
 
 // post for new, put for update
@@ -110,17 +202,31 @@ router.post('/api/item/upsert', function(req, res) {
   let userData = auth.user(req);
 
   if(userData.admin) {
-  	db.Item.upsert(
-	    req.body,
-	    { returning: true }
-	  )
-	    .then(result => {
-	      res.json(result);
-	    })
-	    .catch(err => {
-	      console.error(err);
-	      res.status(500).json(err)
-	    });
+  	if(db.Item === undefined) {
+			db.item.upsert(
+				req.body,
+				{ returning: true }
+			)
+				.then(result => {
+					res.json(result);
+				})
+				.catch(err => {
+					console.error(err);
+					res.status(500).json(err)
+				});
+		} else {
+			db.Item.upsert(
+				req.body,
+				{ returning: true }
+			)
+				.then(result => {
+					res.json(result);
+				})
+				.catch(err => {
+					console.error(err);
+					res.status(500).json(err)
+				});
+		}
   } else {
   	res.status(403).send('you must be an admin to create / update items!')
   }
