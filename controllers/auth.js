@@ -8,7 +8,7 @@ const auth = {
 		if(!req.headers || !req.headers.authorization) token = false;
 		else token = req.headers.authorization.split(" ")[1];
 
-		if(token) {
+		if(token && token != "null") {
 			data = jwt.verify(token, process.env.token, (error, data) => {
 				if(error) {
 					console.error(error);

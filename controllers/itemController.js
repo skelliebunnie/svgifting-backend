@@ -111,6 +111,7 @@ router.get('/api/item/:name', function(req, res) {
 // post for new, put for update
 // can I use post for upsert? YES!
 router.post('/api/item/upsert', function(req, res) {
+	console.log("upsertItem req", req.body.headers)
   let userData = auth.user(req);
 
   if(userData.admin) {

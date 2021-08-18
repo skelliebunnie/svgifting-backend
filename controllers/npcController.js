@@ -23,7 +23,7 @@ router.get("/api/npcs", function (req, res) {
     include: [
       {
         model: db.Item,
-        attributes: ['name'],
+        attributes: ['name', 'id'],
         through: {
           model: db.Gift,
           attributes: ['preference'],
@@ -31,15 +31,15 @@ router.get("/api/npcs", function (req, res) {
       },
       {
         model: db.Location,
-        attributes: ['name'],
+        attributes: ['name', 'id'],
         include: [
           {
             model: db.SubRegion,
-            attributes: ['name'],
+            attributes: ['name', 'id'],
             include: [
               {
                 model: db.Region,
-                attributes: ['name']
+                attributes: ['name', 'id']
               }
             ]
           }
@@ -83,7 +83,7 @@ router.get("/api/npcs/:npcName", function (req, res) {
     		include: [
     			{
     				model: db.Season,
-    				attributes: ["name"]
+    				attributes: ["name", 'id']
     			}
     		]
     	},
@@ -97,7 +97,7 @@ router.get("/api/npcs/:npcName", function (req, res) {
     		include: [
     			{
     				model: db.Season,
-    				attributes: ["name"]
+    				attributes: ["name", 'id']
     			}
     		]
     	},
@@ -109,7 +109,7 @@ router.get("/api/npcs/:npcName", function (req, res) {
       },
       {
         model: db.Item,
-        attributes: ['name'],
+        attributes: ['name', 'id'],
         through: {
           model: db.Gift,
           attributes: ['preference'],
@@ -117,15 +117,15 @@ router.get("/api/npcs/:npcName", function (req, res) {
       },
       {
         model: db.Location,
-        attributes: ['name'],
+        attributes: ['name', 'id'],
         include: [
           {
             model: db.SubRegion,
-            attributes: ['name'],
+            attributes: ['name', 'id'],
             include: [
               {
                 model: db.Region,
-                attributes: ['name']
+                attributes: ['name', 'id']
               }
             ]
           }
@@ -149,13 +149,13 @@ router.get("/api/npcs/:npcId", function (req, res) {
     include: [
       {
         model: db.Npc,
-        attributes: ['name'],
+        attributes: ['name', 'id'],
         as: 'family',
         duplicating: true
       },
       {
         model: db.Item,
-        attributes: ['name'],
+        attributes: ['name', 'id'],
         through: {
           model: db.Gift,
           attributes: ['preference'],
@@ -163,25 +163,25 @@ router.get("/api/npcs/:npcId", function (req, res) {
       },
       {
         model: db.Season,
-        attributes: ['name'],
+        attributes: ['name', 'id'],
         as: 'birthdaySeason'
       },
       {
         model: db.Season,
-        attributes: ['name'],
+        attributes: ['name', 'id'],
         as: 'checkupSeason'
       },
       {
         model: db.Location,
-        attributes: ['name'],
+        attributes: ['name', 'id'],
         include: [
           {
             model: db.SubRegion,
-            attributes: ['name'],
+            attributes: ['name', 'id'],
             include: [
               {
                 model: db.Region,
-                attributes: ['name']
+                attributes: ['name', 'id']
               }
             ]
           }
