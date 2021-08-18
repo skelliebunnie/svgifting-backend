@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require('../models');
-const Item = require('../models/Item')
+const db = require('../models/index');
 const auth = require("./auth.js");
 
 require('dotenv').config()
@@ -19,7 +18,9 @@ router.post('/api/item', function(req, res) {
 })
 
 router.get('/api/items', function(req, res) {
-  dItem.findAll({
+	const Item = db.Item !== undefined ? db.Item : require('../models').Item
+
+  Item.findAll({
     order: ['name'],
     // include: [
     // 	{
