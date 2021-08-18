@@ -16,9 +16,8 @@ if (env === "production") {
     database: process.env.RDS_DB,
     username: process.env.RDS_USERNAME,
     password: process.env.RDS_PASSWORD,
-    port: process.env.RDS_PORT,
-    dialect: process.env.RDS_DIALECT,
-    dialectModule: require('mysql2')
+    port: 3306,
+    dialect: "mysql"
   });
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
