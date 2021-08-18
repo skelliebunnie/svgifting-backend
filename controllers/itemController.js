@@ -18,35 +18,65 @@ router.post('/api/item', function(req, res) {
 })
 
 router.get('/api/items', function(req, res) {
-	const Item = db.Item !== undefined ? db.Item : require('../models').Item
 
-  Item.findAll({
-    order: ['name'],
-    // include: [
-    // 	{
-	  //   	model: db.Category,
-	  //   	attributes: ['id', 'name']
-	  //   },
-	  //   {
-	  //   	model: db.Animal,
-	  //   	attributes: ['id', 'name']
-	  //   },
-	  //   {
-	  //   	model: db.Equipment,
-	  //   	attributes: ['id', 'name']
-	  //   },
-	  //   {
-	  //   	model: db.Season,
-	  //   	through: db.ItemAvailability,
-	  //   	attributes: ['id', 'name']
-	  //   },
-    // ]
-  }).then(items => {
-    return res.json(items);
-  }).catch(err => {
-  	console.error(err);
-  	res.status(500).json(err)
-  });
+	if(db.Item === undefined) {
+		db.item.findAll({
+			order: ['name'],
+			// include: [
+			// 	{
+			//   	model: db.Category,
+			//   	attributes: ['id', 'name']
+			//   },
+			//   {
+			//   	model: db.Animal,
+			//   	attributes: ['id', 'name']
+			//   },
+			//   {
+			//   	model: db.Equipment,
+			//   	attributes: ['id', 'name']
+			//   },
+			//   {
+			//   	model: db.Season,
+			//   	through: db.ItemAvailability,
+			//   	attributes: ['id', 'name']
+			//   },
+			// ]
+		}).then(items => {
+			return res.json(items);
+		}).catch(err => {
+			console.error(err);
+			res.status(500).json(err)
+		});
+	} else {
+		db.Item.findAll({
+			order: ['name'],
+			include: [
+				{
+			  	model: db.Category,
+			  	attributes: ['id', 'name']
+			  },
+			  {
+			  	model: db.Animal,
+			  	attributes: ['id', 'name']
+			  },
+			  {
+			  	model: db.Equipment,
+			  	attributes: ['id', 'name']
+			  },
+			  {
+			  	model: db.Season,
+			  	through: db.ItemAvailability,
+			  	attributes: ['id', 'name']
+			  },
+			]
+		}).then(items => {
+			return res.json(items);
+		}).catch(err => {
+			console.error(err);
+			res.status(500).json(err)
+		});
+	}
+  
 })
 
 router.get('/api/item/:name', function(req, res) {
