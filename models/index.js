@@ -1,5 +1,6 @@
 "use strict";
 
+require('dotenv').config()
 var fs = require("fs");
 var path = require("path");
 var Sequelize = require("sequelize");
@@ -8,15 +9,16 @@ var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.json")[env];
 var db = {};
 
-if (config.use_env_variable) {
+if(config.use_env_variable) {
   var sequelize = new Sequelize(process.env.RDS_DBNAME, process.env.RDS_USERNAME, process.env.RDS_PASSWORD, {
   	host: process.env.RDS_HOSTNAME,
   	port: 3306,
   	dialect: 'mysql',
   	dialectModule: require('mysql2'),
   });
+  
 } else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+  var sequelize = new Sequelize(config.database, config.username, config.password, config)
 }
 
 fs
