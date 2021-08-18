@@ -6,8 +6,7 @@
   "repository": "https://github.com/skelliebunnie/svgifting-backend",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "build": "node index.js"
+    "start": "node index.js"
   },
   "keywords": [
     "Stardew Valley",
