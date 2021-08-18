@@ -17,14 +17,14 @@ router.post("/api/gift", function (req, res) {
 // GET all gifts
 router.get("/api/gifts", function (req, res) {
   db.Item.findAll({
-    attributes: ['id', 'name'],
+    attributes: ['id', 'name', 'availableIn'],
     include: [
       {
         model: db.Npc,
-        attributes: ['id', 'name'],
+        attributes: ['id', 'name', 'availableIn'],
         through: {
           model: db.Gift,
-          attributes: []
+          attributes: ['availableIn']
         }
       },
       {
@@ -54,14 +54,14 @@ router.get("/api/gifts", function (req, res) {
 // GET all gifts, with associated npcs, by preference
 router.get("/api/gifts/:preference", function (req, res) {
   db.Item.findAll({
-    attributes: ['id','name'],
+    attributes: ['id','name', 'availableIn'],
     include: [
       {
         model: db.Npc,
         attributes: ['id', 'name', 'marriageable', 'availableIn'],
         through: {
           model: db.Gift,
-          attributes: [],
+          attributes: ['availableIn'],
           where: {
             preference: req.params.preference
           }
@@ -99,14 +99,14 @@ router.get("/api/gifts/:preference", function (req, res) {
 // GET one gift (by name)
 router.get("/api/gift/:name", function (req, res) {
   db.Item.findOne({
-    attributes: ['id', 'name'],
+    attributes: ['id', 'name', 'availableIn'],
     where: {
       name: req.params.name
     },
     include: [
       {
         model: db.Gift,
-        attributes: ['preference']
+        attributes: ['preference', 'availableIn']
       },
       {
         model: db.Npc,

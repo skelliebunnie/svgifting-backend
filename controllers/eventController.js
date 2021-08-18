@@ -12,7 +12,7 @@ router.post('/api/event', function(req, res) {
 
 router.get('/api/events', function(req, res) {
   db.Event.findAll({
-    include: [db.Npc['name'], db.Season['name']],
+    include: [db.Npc['name', "availableIn"], db.Season['name']],
     order: ['seasonId', 'day']
   })
     .then(results => res.json(results))
@@ -28,7 +28,7 @@ router.get('/api/events/:season', function(req, res) {
     include: [
       {
         model: db.Npc,
-        attributes: ['name']
+        attributes: ['name', "availableIn"]
       }, 
       {
         model: db.Season,
